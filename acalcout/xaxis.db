@@ -1,0 +1,23 @@
+record(ao, "STARTVAL") {
+    field(VAL,"0")
+    field(PINI,"YES")
+    field(FLNK, "XAXIS_create")
+}
+
+record(ao, "DELTA") {
+    field(VAL,"3")
+    field(PINI,"YES")
+    field(FLNK, "XAXIS_create")
+}
+
+record(acalcout, "XAXIS_create") {
+    field(INPA, "STARTVAL")
+    field(INPB, "DELTA")
+    field(NELM, "100")
+    field(CALC, "(IX*B)+A")
+    field(OUT, "XAXIS PP")
+}
+
+record(waveform, "XAXIS"){
+    field(NELM, "100")
+}
