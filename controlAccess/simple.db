@@ -1,0 +1,3 @@
+record(ai, "MUMBLE") {
+    field(VAL, "12")
+}
