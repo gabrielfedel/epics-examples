@@ -1,3 +1,3 @@
 var asCheckClientIP 1
-asSetFilename("/home/iocuser/testPvAccessAcessControl/sec.acf")
+asSetFilename("$(E3_CMD_TOP)/sec.acf")
 dbLoadRecords("simple.db")
