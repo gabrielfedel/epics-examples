@@ -4,7 +4,7 @@ record(ao, "STARTVAL") {
     field(FLNK, "XAXIS_create")
 }
 
-record(ao, "DELTA") {
+record(ai, "DELTA") {
     field(VAL,"3")
     field(PINI,"YES")
     field(FLNK, "XAXIS_create")
