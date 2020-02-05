@@ -1,0 +1,26 @@
+record(bo, "LINCALIB") {
+    field(VAL, "1")
+    field(FLNK, "CALC")
+    field(PINI, "YES")
+}
+
+record(calc, "CALC") {
+    field(INPA, "LINCALIB")
+    field(CALC, "!A")
+    field(FLNK, "SEQ")
+}
+
+record(seq, "SEQ") {
+    field(DOL0, "CALC")
+    field(DOL1, "CALC")
+    field(LNK0, "VAL1.DISP")
+    field(LNK1, "VAL2.DISP")
+}
+
+record(ai, "VAL1") {
+    field(VAL, "1")
+}
+
+record(ai, "VAL2") {
+    field(VAL, "2")
+}
