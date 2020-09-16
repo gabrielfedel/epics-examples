@@ -1,0 +1,12 @@
+# Linear conversion test
+
+record(ai, "TEST") {
+}
+
+record(ao, "TEST2") {
+    field(LINR, "typeSdegF")
+    field(OUT, "TEST")
+    field(DTYP, "Raw Soft Channel")
+}
+
+record(aai, "TEST3") {}
