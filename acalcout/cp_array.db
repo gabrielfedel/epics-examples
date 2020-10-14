@@ -1,0 +1,20 @@
+record(waveform, "ORIG"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+
+record(acalcout, "COPY") {
+    field(INAA, "ORIG CP")
+    field(INPA, "ORIG.NORD")
+    field(NELM, "100")
+    field(NUSE, "100")
+    field(SIZE, "NUSE")
+    field(CALC, "AA[0,A]")
+    field(OUT, "RESULT PP")
+}
+
+record(waveform, "RESULT") {
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+

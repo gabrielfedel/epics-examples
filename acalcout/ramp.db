@@ -1,0 +1,19 @@
+record(ao, "DWELL") {
+    field(VAL, "0.5")
+    field(PINI, "YES")
+    field(FLNK, "RAMP_create")
+}
+
+record(acalcout, "RAMP_create") {
+    field(INPA, "DWELL")
+    field(NELM, "10")
+    field(CALC, "(IX*0)+A{1,10}")
+    field(OUT, "RAMP PP")
+}
+
+
+record(waveform, "RAMP"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+

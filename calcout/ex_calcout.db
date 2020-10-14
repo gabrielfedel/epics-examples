@@ -1,0 +1,41 @@
+record(ao, "MYVAL"){
+    field(PREC, "12")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "MYVAL CPP")
+    field(CALC, "2*A")
+    field(OUT, "RESULT PP")
+}
+
+record(ai, "RESULT") {
+    field(PREC, 12)
+}
+
+record(ao, "NR"){
+    field(PREC, "12")
+}
+
+record(calcout, "CALCTEST2") {
+    field(INPA, "MYVAL CPP")
+    field(INPB, "NR CPP")
+    field(CALC, "((1<<(A-1))<<4 | (15-(1<<(A-1))))&((2**B-1)<<4|(2**B-1))")
+}
+
+record(mbbo, "MBBOTEST") {
+    field(ZRST, "1")
+    field(ONST, "2")
+    field(TWST, "")
+    field(SHFT, "1")
+    field(FLNK, "MBBPLS1")
+}
+
+record(calc, "MBBPLS1") {
+    field(INPA, "MBBOTEST")
+    field(CALC, "A+1")
+}
+
+
+record(ao, "MYVAL2"){
+    field(PREC, "-1")
+}

@@ -1,2 +1,4 @@
-require calc, 3.7.1
+require calc, 3.7.3
 dbLoadRecords("xaxis.db")
+dbLoadRecords("ramp.db")
+dbLoadRecords("cp_array.db")

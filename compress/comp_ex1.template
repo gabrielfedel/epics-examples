@@ -1,0 +1,35 @@
+record(ao, "PVVALUE") {
+    field(PREC,"12")
+    field(FLNK, "PVTESTCOMP PP")
+}
+
+record(compress, "PVTESTCOMP") {
+    field(INP, "PVVALUE")
+    field(ALG, "Circular Buffer")
+    field(NSAM, "$(NSAM)")
+    field(N, "10")
+    field(FLNK, "PVRESULT PP")
+}
+
+
+record(waveform, "PVRESULT"){
+    field(INP, "PVTESTCOMP")
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+
+
+record(stringout, "DEF"){
+    field(VAL, "AAA")
+}
+
+record(lso, "lsoa") {
+    field(DOL, "DEF")
+    field(OMSL, "closed_loop")
+    field(OUT, "ABC")
+}
+
+record(waveform, "ABC"){
+    field(NELM, "100")
+    field(FTVL, "CHAR")
+}

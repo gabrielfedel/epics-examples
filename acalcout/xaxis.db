@@ -2,6 +2,10 @@ record(ao, "STARTVAL") {
     field(VAL,"0")
     field(PINI,"YES")
     field(FLNK, "XAXIS_create")
+    field(ASLO, "0.001")
+    field(DRVH, "1000")
+    field(DRVL, "0")
+    
 }
 
 record(ao, "DELTA") {

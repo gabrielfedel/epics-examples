@@ -1,0 +1,3 @@
+record(ao, "PV1"){
+    field(VAL, $(INITVAL))
+}

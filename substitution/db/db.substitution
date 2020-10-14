@@ -1,0 +1,4 @@
+file $(E3_CMD_TOP)/../db/db.db { {
+    INITVAL = 10
+    }
+}
