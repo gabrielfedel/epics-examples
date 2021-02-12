@@ -1,0 +1,13 @@
+
+record(acalcout, "$(PREFIX):#$(PI_TYPE)-PT0-ANG-RAMP") { 
+    field(DESC, "Create a simple ramp for magnitude")    
+    field(INPA, "$(PREFIX):$(PI_TYPE)-PT0-ANG-FIX-STR")  
+    field(INPB, "$(PREFIX):$(PI_TYPE)-PT0-ANG-FIX-END")  
+    field(INPC, "$(PREFIX):$(PI_TYPE)-PT0-ANG-FIX-NELM") 
+    field(NELM, "10000") # TODO add a macro              
+    field(NUSE, "10")                                    
+    field(SIZE, "NUSE")                                  
+    field(CALC, "(IX*0 + A){0,C}+(B-A){1,C}")            
+    field(OUT, "$(PREFIX):$(PI_TYPE)-PT0-ANG PP")        
+}                                                        
+

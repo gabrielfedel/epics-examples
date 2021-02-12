@@ -1,0 +1,15 @@
+record(bo, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab") {
+    field(VAL, "1")
+    field(ZNAM,"ZERO")
+    field(ONAM,"ONE")
+    field(PINI, "YES")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "0")
+    field(INPB, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")
+    field(CALC, "A:=!B*A;A:=A+1;A>2?1:0")
+    field(OOPT, "When Non-zero")
+    field(OUT, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab PP")
+    field(FLNK, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")
+}

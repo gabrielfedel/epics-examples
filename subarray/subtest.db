@@ -1,0 +1,14 @@
+# Test subArray functionality
+
+record(waveform, "WAVE"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+}
+
+record(subArray, "SUB") {
+    field(DESC, "read maximum power array")
+    field(INP,  "WAVE CPP")
+    field(FTVL, "DOUBLE")
+    field(MALM, "100")
+    field(INDX, "0")
+}

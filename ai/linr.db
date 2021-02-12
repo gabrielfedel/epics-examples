@@ -1,12 +1,12 @@
 # Linear conversion test
 
 record(ai, "TEST") {
+    field(PREC, "6")
 }
 
 record(ao, "TEST2") {
     field(LINR, "typeSdegF")
-    field(OUT, "TEST")
+    field(OUT, "TEST PP")
     field(DTYP, "Raw Soft Channel")
+    field(PREC, "6")
 }
-
-record(aai, "TEST3") {}

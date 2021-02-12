@@ -1,0 +1,18 @@
+# Create a waveform with 2 positions, both with the same input value
+record(ao, "INPUT") {
+    field(VAL, "2.5")
+}
+
+record(acalcout, "WAVE_create") {
+    field(INPA, "INPUT CP")
+    field(NELM, "$(SIZE=2)")
+    field(CALC, "((IX+1)/(IX+1))*A")
+    field(OUT, "WAVE PP")
+}
+
+record(waveform, "WAVE"){
+    field(NELM, "$(SIZE=2)")
+    field(FTVL, "DOUBLE")
+}
+
+

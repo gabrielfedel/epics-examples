@@ -1,0 +1,25 @@
+record(ao, "AVERYLARGEPVWITHMANYCARACHTERAVERYLARGEPVWITHMANYCARACHTERSS") {
+    field(VAL,"0")
+    field(PINI,"YES")
+    field(ASLO, "0.001")
+    field(DRVH, "1000")
+    field(DRVL, "0")
+    
+}
+
+record(ao, "DELTA") {
+    field(VAL,"3")
+    field(PINI,"YES")
+}
+
+record(acalcout, "XAXIS_create") {
+    field(INPA, "AVERYLARGEPVWITHMANYCARACHTERAVERYLARGEPVWITHMANYCARACHTERSS CP")
+    field(INPB, "DELTA")
+    field(NELM, "100")
+    field(CALC, "(IX*B)+A")
+    field(OUT, "XAXIS PP")
+}
+
+record(waveform, "XAXIS"){
+    field(NELM, "100")
+}

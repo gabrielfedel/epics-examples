@@ -1,0 +1,18 @@
+# Linear conversion test
+
+record(ai, "TEST") {
+#    field(FLNK, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")
+}
+
+record(ai, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab") {
+
+}
+
+record(calcout, "CALC") {
+    field(INPA, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab CP")
+    field(CALC, "A+1")
+}
+
+record(ai, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac") {
+
+}

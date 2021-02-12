@@ -1,0 +1,37 @@
+record(ao, "START"){
+    field(VAL, "0.1")
+    field(PINI, "YES")
+    field(FLNK, "RAMP_create")
+}
+
+record(ao, "END"){
+    field(VAL, "0.9")
+    field(PINI, "YES")
+    field(FLNK, "RAMP_create")
+}
+
+record(ao, "NELM") {
+    field(VAL, "10")
+    field(PINI, "YES")
+    field(FLNK, "RAMP_create")
+    field(PREC, "0")
+    field(OUT, "RAMP_create.NUSE")
+}
+
+record(acalcout, "RAMP_create") {
+    field(INPA, "START")
+    field(INPB, "END")
+    field(INPC, "NELM")
+    field(NELM, "1000")
+    field(NUSE, "10")                                    
+    field(SIZE, "NUSE")                                  
+    field(CALC, "A + IX*((B-A)/(C-1))")
+    field(OUT, "RAMP PP")
+}
+
+
+record(waveform, "RAMP"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+

@@ -3,6 +3,12 @@ record(waveform, "ORIG"){
     field(FTVL, "DOUBLE")
 }
 
+
+record(waveform, "ORIG2"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+}
+
 record(acalcout, "COPY") {
     field(INAA, "ORIG CP")
     field(INPA, "ORIG.NORD")
