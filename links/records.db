@@ -1,0 +1,18 @@
+
+record(ao, "MYVAL"){
+    field(PREC, "12")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "MYVAL CP")
+    field(CALC, "2*A")
+}
+
+record(ai, "LINK"){
+    field(INP, "CALCTEST CP")
+}
+
+
+record(longin, "LINK2"){
+    field(INP, "CALCTEST CP")
+}
