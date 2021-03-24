@@ -1,0 +1,10 @@
+# test autosave
+record(ai, "TEST") {
+    field(PREC, "6")
+    info(autosaveFields, "VAL")
+}
+
+record(ai, "TEST2") {
+    field(PREC, "6")
+    info(autosaveFields, "VAL")
+}
