@@ -1,6 +1,8 @@
 # test autosave
 record(ai, "TEST") {
     field(PREC, "6")
+    field(VAL, "3")
+    field(PINI, "YES")
     info(autosaveFields, "VAL")
 }
 
