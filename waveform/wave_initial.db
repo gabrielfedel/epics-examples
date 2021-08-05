@@ -1,0 +1,7 @@
+record(waveform, "WAVE"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    field(INP, [0, 0])
+    field(PINI, "YES")
+}
+

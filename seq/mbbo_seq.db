@@ -1,0 +1,31 @@
+record(mbbo, "CHOOSE") {
+    field(VAL, "0")
+    field(OUT, "SEQ.SELN PP")
+    field(PINI, "YES")
+}
+
+record(seq, "SEQ") {
+    field(SELM, "Specified")
+    field(DOL0, "VAL1")
+    field(DOL1, "VAL2")
+    field(DOL2, "VAL3")
+    field(LNK0, "RESULT PP")
+    field(LNK1, "RESULT PP")
+    field(LNK2, "RESULT PP")
+}
+
+record(ai, "VAL1") {
+    field(VAL, "1")
+}
+
+record(ai, "VAL2") {
+    field(VAL, "2")
+}
+
+record(ai, "VAL3") {
+    field(VAL, "3")
+}
+
+record(ai, "RESULT") {
+    field(VAL, "0")
+}

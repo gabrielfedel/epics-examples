@@ -1,0 +1,16 @@
+record(bo, "RES") {
+    field(VAL, "0")
+    field(ZNAM,"ZERO")
+    field(ONAM,"ONE")
+    field(HIGH, "0.01")
+}
+
+record(waveform, "VAL"){
+    field(NELM, "1000")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "VAL CP")
+    field(CALC, "1")
+    field(OUT, "RES PP")
+}

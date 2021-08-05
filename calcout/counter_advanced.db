@@ -1,0 +1,22 @@
+record(longin, "RATE") {
+    field(VAL, "5")
+}
+
+record(calcout, "CALCTEST") {
+    field(VAL, "0")
+    field(INPA, "RATE")
+    field(CALC, "VAL>=(A-1)?0:VAL+1")
+    field(OUT, "CALCTEST")
+    field(FLNK, "CALCTEST2")
+}
+
+record(calcout, "CALCTEST2"){
+    field(INPA, "CALCTEST")
+    field(CALC, "A=0?1:0")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT, "TEST.PROC")
+}
+
+record(ai, "TEST"){
+    field(TPRO, "1")
+}
