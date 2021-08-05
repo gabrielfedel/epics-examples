@@ -1,4 +1,4 @@
-require autosave
+require common
 
 epicsEnvSet("AS_TOP", "$(E3_CMD_TOP)")
 epicsEnvSet("IOCNAME", "TESTIOC")

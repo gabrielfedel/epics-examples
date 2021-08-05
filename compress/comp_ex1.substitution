@@ -1,5 +1,5 @@
 file comp_ex1.template {
     {
-        NSAM=200
+        NSAM=10
     }
 }
