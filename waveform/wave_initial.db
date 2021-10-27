@@ -1,7 +1,15 @@
 record(waveform, "WAVE"){
     field(NELM, "$(SIZE=100)")
     field(FTVL, "DOUBLE")
-    field(INP, [0, 0])
+    field(INP, [3, 4])
+    field(PINI, "YES")
+}
+
+
+record(waveform, "WAVE2"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    field(INP, {const: [1, 2]})
     field(PINI, "YES")
 }
 
