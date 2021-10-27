@@ -1,0 +1,54 @@
+
+record(aai, "$(N)Players") {
+    field(FTVL, "STRING")
+    field(NELM, "2")
+    field(PINI,"YES")
+    field(INP , {const:["Player A", "Player B"]})
+    info(Q:group, {
+        "$(N)ResultsTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+    field(TPRO, "1")
+}
+
+record(aao, "$(N)PointsA") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(PINI,"YES")
+    info(Q:group, {
+        "$(N)ResultsTable":{
+            "value.A":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+    field(TPRO, "1")
+    field(FLNK, "$(N)Save")
+}
+
+record(aao, "$(N)PointsB") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(PINI,"YES")
+    info(Q:group, {
+        "$(N)ResultsTable":{
+            "":{+type:"meta", +channel:"VAL"},
+            "value.B":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+    field(TPRO, "1")
+    field(FLNK, "$(N)Save")
+}
+
+record(longout, "$(N)Save") {
+    field(MDEL, "-1") # ensure we always trigger group monitor
+    field(TPRO, "1")
+    info(Q:group, {
+        "$(N)ResultsTable":{
+            "_save":{+type:"proc",
+                     +channel:"VAL",
+                     +putorder:2,
+                     +trigger:"*"}
+        }
+    })
+}

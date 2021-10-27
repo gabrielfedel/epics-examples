@@ -1,2 +1,2 @@
-require calc, 3.7.3
+require calc
 dbLoadTemplate("comp_ex1.substitution")

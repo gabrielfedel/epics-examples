@@ -11,7 +11,7 @@ record(waveform, "ORIG2"){
 
 record(acalcout, "MON") {
     field(INAA, "ORIG CP")
-    field(INPA, "ORIG2")
+    field(INPA, "ORIG2 CP")
     field(NELM, "100")
     field(NUSE, "100")
     field(SIZE, "NUSE")

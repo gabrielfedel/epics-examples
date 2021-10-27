@@ -1,0 +1,26 @@
+# Test with NTtable to use phoebus table plugin
+
+record(aai, "Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "1")
+    field(PINI,"YES")
+    field(INP , {const:["Values"]})
+    info(Q:group, {
+        "MyTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+    field(TPRO, "1")
+}
+
+record(aao, "WAVE"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    info(Q:group, {
+        "MyTable":{
+            "value":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+}
+

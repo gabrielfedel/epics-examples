@@ -1,3 +1,4 @@
+# Test circular buffer
 record(ao, "PVVALUE") {
     field(PREC,"12")
     field(FLNK, "PVTESTCOMP PP")
@@ -8,7 +9,7 @@ record(compress, "PVTESTCOMP") {
     field(ALG, "Circular Buffer")
     field(NSAM, "$(NSAM)")
     field(N, "10")
-    field(FLNK, "PVRESULT PP")
+    field(FLNK, "PVRESULT")
 }
 
 

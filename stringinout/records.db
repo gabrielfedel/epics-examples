@@ -1,0 +1,30 @@
+record (stringout, "TEST1") {
+    field(VAL, "VAL1")
+    field(OUT, "RESULT")
+}
+
+record (stringout, "TEST2") {
+    field(VAL, "VAL2")
+    field(OUT, "RESULT")
+}
+
+record (fanout, "fan" ){
+    field(SELM, "Specified")
+    field(LNK0, "TEST1")
+    field(LNK1, "TEST2")
+}
+
+record(stringin, "RESULT") {
+
+}
+
+record(mbbo, "MBBO") {
+    field(ZRST, "STR1")
+    field(ONST, "STR2")
+    field(OUT, "RESULT2")
+}
+
+
+record(stringin, "RESULT2") {
+
+}
