@@ -1,0 +1,23 @@
+record(waveform, "ORIG"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+    field(INP, "[1,2,3,4,5]")
+    field(PINI, "YES")
+}
+
+record(ao, "POS") {
+}
+
+record(acalcout, "MON") {
+    field(INAA, "ORIG CP")
+    field(INPA, "POS CP")
+    field(NELM, "100")
+    field(NUSE, "100")
+    field(SIZE, "NUSE")
+    field(CALC, "AA[A,A]")
+    field(OUT, "RESULT PP")
+}
+
+record(ai, "RESULT") {
+}
+

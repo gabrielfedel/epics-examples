@@ -1,0 +1,51 @@
+## Select a value between a specific position on a waveform
+## And a scalar PV
+
+
+record(bo, "FIXORTBL") {
+    field(ZNAM, "fix")
+    field(ONAM, "table")
+    field(VAL, "0")
+    field(PINI, "YES")
+    field(FLNK, "SEL")
+}
+
+record(seq, "SEL"){
+    field(SELM, "Specified")
+    field(SELL, "FIXORTBL")
+    field(SHFT, "0")
+    field(DOL0, "FIXVAL CP")
+    field(LNK0, "RESULT PP")
+    field(DOL1, "RESULTSELTBL CP")
+    field(LNK1, "RESULT PP")
+}
+
+# Fixed value
+record(ao, "FIXVAL"){
+
+}
+
+record(waveform, "TABLE"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+    field(INP, "[1,2,3,4,5]")
+    field(PINI, "YES")
+}
+
+record(ao, "POS") {
+}
+
+record(acalcout, "SETFROMTABLE") {
+    field(INAA, "TABLE CP ")
+    field(INPA, "POS CP")
+    field(NELM, "100")
+    field(NUSE, "100")
+    field(SIZE, "NUSE")
+    field(CALC, "AA[A,A]")
+    field(OUT, "RESULTSELTBL PP")
+}
+record(ai, "RESULTSELTBL")
+
+record(ai, "RESULT") {
+}
+
