@@ -1,0 +1,14 @@
+record(calcout, "COUNT"){
+    field(CALC, "VAL<10?VAL+1:0")        
+    field(OCAL, "1")                      
+    field(VAL,  "0")                      
+    field(OOPT, "When Non-zero")          
+    field(DOPT, "Use OCAL")               
+    field(OUT,  "RES PP")                       
+}                   
+
+record(ao, "RES") {
+	field(TPRO, "1")
+
+}                      
+

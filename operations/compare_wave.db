@@ -1,0 +1,65 @@
+# Record to compare 2 waveforms
+
+record(waveform, "WAVE1"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    field(INP, [3, 4])
+    field(PINI, "YES")
+}
+
+record(waveform, "WAVE2"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    field(INP, [3, 4.01])
+    field(PINI, "YES")
+}
+
+#maximum delta between the values
+record(ao, "DELTA"){
+    field(VAL, "0.1")
+}
+
+record(seq, "COMPWAVES"){
+    field(DO0,  "1")
+    field(LNK0, "COMPLEN")
+}
+
+record(calcout,  "COMPLEN"){
+    field(INPA, "WAVE1.NORD")
+    field(INPB, "WAVE2.NORD")
+    field(CALC, "A=B?1:0")
+}
+
+record(subArray, "SUBWAVE1") {
+    field(INP, "WAVE1")
+    field(MALM, "100")
+    field(NELM, "1")
+    field(FTVL, "DOUBLE")
+}
+
+record(subArray, "SUBWAVE2") {
+    field(INP, "WAVE2")
+    field(MALM, "100")
+    field(NELM, "1")
+    field(FTVL, "DOUBLE")
+}
+
+record(calcout, "COMPELEM"){
+    field(INPA, "SUBWAVE1")
+    field(INPB, "SUBWAVE2")
+    field(INPC, "DELTA")
+    field(CALC, "ABS(A-B)<DELTA?1:0")
+}
+
+record(calcout, "INDEX"){
+    field(INPA, "WAVE1.NORD")
+    field(CALC, "VAL<INPA?VAL+1:0")
+
+}
+
+record(dfanout, "SETINDEX"){
+    field(DOL,  "INDEX")
+    field(OUTA, "SUBWAVE1.INDX")
+    field(OUTB, "SUBWAVE2.INDX")
+    field(FLNK, "COMPELEM")
+}

@@ -10,5 +10,6 @@ record(subArray, "SUB") {
     field(INP,  "WAVE CPP")
     field(FTVL, "DOUBLE")
     field(MALM, "100")
+    field(NELM, "1")
     field(INDX, "0")
 }

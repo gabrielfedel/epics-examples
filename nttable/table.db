@@ -13,42 +13,43 @@ record(aai, "$(N)Players") {
     field(TPRO, "1")
 }
 
-record(aao, "$(N)PointsA") {
+record(aai, "$(N)PointsA") {
     field(FTVL, "LONG")
     field(NELM, "10")
     field(PINI,"YES")
+    field(INP , {const:[1, 2]})
     info(Q:group, {
         "$(N)ResultsTable":{
             "value.A":{+type:"plain", +channel:"VAL", +putorder:1}
         }
     })
     field(TPRO, "1")
-    field(FLNK, "$(N)Save")
+#    field(FLNK, "$(N)Save")
 }
 
-record(aao, "$(N)PointsB") {
+record(aai, "$(N)PointsB") {
     field(FTVL, "LONG")
     field(NELM, "10")
     field(PINI,"YES")
+    field(INP , {const:[3, 4]})
     info(Q:group, {
         "$(N)ResultsTable":{
-            "":{+type:"meta", +channel:"VAL"},
             "value.B":{+type:"plain", +channel:"VAL", +putorder:1}
         }
     })
     field(TPRO, "1")
-    field(FLNK, "$(N)Save")
+#    field(FLNK, "$(N)Save")
 }
 
-record(longout, "$(N)Save") {
-    field(MDEL, "-1") # ensure we always trigger group monitor
-    field(TPRO, "1")
-    info(Q:group, {
-        "$(N)ResultsTable":{
-            "_save":{+type:"proc",
-                     +channel:"VAL",
-                     +putorder:2,
-                     +trigger:"*"}
-        }
-    })
-}
+#record(longout, "$(N)Save") {
+#    field(MDEL, "-1") # ensure we always trigger group monitor
+#    field(TPRO, "1")
+#    info(Q:group, {
+#        "$(N)ResultsTable":{
+#            "_save":{+type:"proc",
+#                     +channel:"VAL",
+#                     +putorder:2,
+#                     +trigger:"*"}
+#        }
+#    })
+#}

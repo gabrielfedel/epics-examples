@@ -1,0 +1,16 @@
+record(mbbo, "TEST:MBBI") {                
+    field(ZRST, "0.5 Hz")                         
+    field(ONST, "1 Hz")                           
+    field(TWST, "2 Hz")                           
+    field(THST, "3.5 Hz")                         
+    field(FRST, "7 Hz")                           
+    field(FVST, "14 Hz")                          
+                                                  
+    field(ZRVL, "66")                              
+    field(ONVL, "150")                              
+    field(TWVL, "200")                             
+    field(THVL, "11")                             
+    field(FRVL, "12")                             
+    field(FVVL, "13")                             
+}                                                 
+

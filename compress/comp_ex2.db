@@ -1,0 +1,18 @@
+record(waveform, "PVINPUT"){
+    field(INP, [1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+
+record(compress, "PVTESTCOMP") {
+    field(INP, "PVINPUT")
+    field(ALG, "N to 1 High Value")
+    field(NSAM, "10")
+    field(N,    "10")
+    field(FLNK, "MAX")
+}
+
+record(bi, "MAX"){
+    field(INP, "PVTESTCOMP")
+}

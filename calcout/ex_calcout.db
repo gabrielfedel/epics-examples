@@ -39,3 +39,8 @@ record(calc, "MBBPLS1") {
 record(ao, "MYVAL2"){
     field(PREC, "-1")
 }
+
+record(calcout, "SELECT"){
+    field(INPA, "MYVAL CP")
+    field(CALC, "A=1?0:(A=2?1:2)")
+}
