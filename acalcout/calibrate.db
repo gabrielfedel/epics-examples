@@ -1,0 +1,153 @@
+# "Calibrate" a waveform
+record(ao, "SLOPE") {
+    field(VAL, "2")
+}
+
+record(ao, "OFFSET") {
+    field(VAL, "5")
+}
+
+record(waveform, "WAVE"){
+    field(NELM, "10")
+    field(INP, [1,2,3,4,5,6,7])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "WAVE.NORD")
+    field(CALC, "A")
+    field(OUT,  "WAVE_create.NUSE PP")
+}
+
+record(ao, "COEF1"){
+    field(VAL,  "0.1")
+}
+record(ao, "COEF2"){
+    field(VAL,  "0.2")
+}
+record(ao, "COEF3"){
+    field(VAL,  "0.3")
+}
+record(ao, "COEF4"){
+    field(VAL,  "0.4")
+}
+record(ao, "COEF5"){
+    field(VAL,  "0.5")
+}
+record(ao, "COEF6"){
+    field(VAL,  "0.6")
+}
+record(ao, "COEF7"){
+    field(VAL,  "0.7")
+}
+record(ao, "COEF8"){
+    field(VAL,  "0.8")
+}
+record(ao, "COEF9"){
+    field(VAL,  "0.9")
+}
+record(ao, "COEF10"){
+    field(VAL,  "0.10")
+}
+
+record(acalcout, "WAVE_create") {
+    field(INPA, "COEF1")
+    field(INPB, "COEF2")
+    field(INPC, "COEF3")
+    field(INPD, "COEF4")
+    field(INPE, "COEF5")
+    field(INPF, "COEF6")
+    field(INPG, "COEF7")
+    field(INPH, "COEF8")
+    field(INPI, "COEF9")
+    field(INAA, "WAVE")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "A+(B*AA)+(C*AA)^3+(D*AA)^4+(E*AA)^5+(F*AA)^6+(G*AA)^7+(H*AA)^8+(I*AA)^9")
+    field(OUT, "RESULT PP")
+}
+
+
+record(waveform, "RESULT"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+
+record(waveform, "MAG"){
+    field(NELM, "10")
+    field(INP, [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "CALCSIZE")
+}
+
+record(waveform, "ANG"){
+    field(NELM, "10")
+    field(INP, [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "CALCSIZE")
+}
+
+record(calc, "CALCSIZE"){
+    field(INPA, "MAG.NORD")
+    field(INPB, "ANG.NORD")
+    field(CALC, "MIN(A,B)")
+    field(FLNK, "SETSIZE")
+}
+
+record(dfanout, "SETSIZE"){
+    field(DOL,  "CALCSIZE")
+    field(OMSL, "closed_loop")
+    field(OUTA, "MAGRAW.NUSE")
+    field(OUTB, "CALCULATEI.NUSE")
+    field(OUTC, "CALCULATEQ.NUSE")
+    field(FLNK, "MAGRAW")
+}
+
+
+record(bo, "CALEN"){
+    field(VAL, "0")
+}
+
+record(acalcout, "MAGRAW"){
+    field(INPA, "CALEN")
+    field(INAA, "MAG")
+    field(NELM, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "A=0?AA:AA")
+    field(FLNK, "CALCULATEI")
+}
+
+
+record(acalcout, "CALCULATEI") {
+    field(INAA, "MAGRAW.AVAL")
+    field(INBB, "ANG")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA*COS(BB)")
+    field(OUT, "IWAVE PP")
+    field(FLNK, "CALCULATEQ")
+}
+
+record(acalcout, "CALCULATEQ") {
+    field(INAA, "MAGRAW.AVAL")
+    field(INBB, "ANG")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA*SIN(BB)")
+    field(OUT, "QWAVE PP")
+}
+
+record(waveform, "IWAVE"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+record(waveform, "QWAVE"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
