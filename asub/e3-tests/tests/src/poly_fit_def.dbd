@@ -1,0 +1,3 @@
+function(polynomial_fit);
+function(fitted_curve);
+function(remove_negatives);

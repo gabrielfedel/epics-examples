@@ -1,0 +1,267 @@
+# Coef resultants:
+record(ao, "COEF1"){
+    field(VAL,  "0.1")
+    field(PREC, "10")
+}
+record(ao, "COEF2"){
+    field(VAL,  "0.2")
+    field(PREC, "10")
+}
+record(ao, "COEF3"){
+    field(VAL,  "0.3")
+    field(PREC, "10")
+}
+record(ao, "COEF4"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF5"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF6"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF7"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF8"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF9"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF10"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+record(ao, "COEF11"){
+    field(VAL,  "0")
+    field(PREC, "10")
+}
+
+# Records for polynomial fitting
+
+record(aSub, "$(P)$(R)#Fit$(CH)") {
+    field(DESC, "Polynomial fitting")
+    field(SNAM, "polynomial_fit")
+    field(INPA, "$(P)$(R)$(X) CP")
+    field(NOA,  "$(MAXELEM=2000)")
+    field(INPB, "$(P)$(R)$(X).NORD")
+    field(FTB,  "LONG")
+
+    field(INPC, "$(P)$(R)$(Y) CP")
+    field(NOC,  "$(MAXELEM=2000)")
+    field(INPD, "$(P)$(R)$(Y).NORD")
+    field(FTD,  "LONG")
+
+    field(INPE, "$(P)$(R)FitOrd$(CH) CP")
+    field(FTE,  "LONG")
+
+    field(FTVA, "DOUBLE")
+    field(OUTA, "COEF1 PP")
+
+    field(FTVB, "DOUBLE")
+    field(OUTB, "COEF2 PP")
+
+    field(FTVC, "DOUBLE")
+    field(OUTC, "COEF3 PP")
+
+    field(FTVD, "DOUBLE")
+    field(OUTD, "COEF4 PP")
+
+    field(FTVE, "DOUBLE")
+    field(OUTE, "COEF5 PP")
+
+    field(FTVF, "DOUBLE")
+    field(OUTF, "COEF6 PP")
+
+    field(FTVG, "DOUBLE")
+    field(OUTG, "COEF7 PP")
+
+    field(FTVH, "DOUBLE")
+    field(OUTH, "COEF8 PP")
+
+    field(FTVI, "DOUBLE")
+    field(OUTI, "COEF9 PP")
+
+    field(FTVJ, "DOUBLE")
+    field(OUTJ, "COEF10 PP")
+
+    field(FTVK, "DOUBLE")
+    field(OUTK, "COEF11 PP")
+
+    field(FTVU, "DOUBLE")
+    field(NOVU, "$(MAXN=10)")
+    field(OUTU, "$(P)$(R)FitCof$(CH) PP")
+#
+#    field(FTVB, "DOUBLE")
+#    field(OUTB, "$(P)$(R)Chiq$(CH) PP")
+
+    field(FLNK, "$(P)$(R)#Fit2$(CH)")
+
+    info(DESCRIPTION, "Polynomial fitting")
+}
+
+record(ai, "$(P)$(R)Chiq$(CH)") {
+    field(DESC, "Chisq")
+    field(PREC, "10")
+}
+
+record(ao, "$(P)$(R)FitOrd$(CH)") {
+    field(DESC, "Degree of Fitting")
+    field(VAL, "1")
+    field(DRVL, "1")
+    field(DRVH, "$(MAXN=10)")
+    field(PREC, "0")
+}
+
+record(waveform, "$(P)$(R)FitCof$(CH)") {
+    field(DESC, "Fitting coefficients")
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXN=10)")
+}
+
+record(waveform, "$(P)$(R)$(X)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+record(waveform, "$(P)$(R)$(Y)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+record(aSub, "$(P)$(R)#CalcFittedLine$(CH)") {
+    field(DESC, "Calc fitted line")
+    field(SNAM, "fitted_curve")
+    field(INPA, "$(P)$(R)FitCof$(CH) CP")
+    field(NOA,  "$(MAXN=10)")
+    field(INPB, "$(P)$(R)FitCof$(CH).NORD")
+    field(FTB,  "LONG")
+    field(INPC, "$(P)$(R)$(X) CP")
+    field(NOC,  "$(MAXELEM=2000)")
+    field(INPD, "$(P)$(R)$(X).NORD")
+    field(FTD,  "LONG")
+
+    field(FTVA, "DOUBLE")
+    field(NOVA, "$(MAXELEM=2000)")
+    field(OUTA, "$(P)$(R)FittedCurve$(CH) PP")
+
+    info(DESCRIPTION, "Calc fitted line")
+}
+
+record(waveform, "$(P)$(R)FittedCurve$(CH)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+
+record(aSub, "$(P)$(R)#CalcInvFittedLine$(CH)") {
+    field(DESC, "Calc inv fitted line")
+    field(SNAM, "fitted_curve")
+    field(INPA, "$(P)$(R)FitCof$(CH) CP")
+    field(NOA,  "$(MAXN=10)")
+    field(INPB, "$(P)$(R)FitCof$(CH).NORD")
+    field(FTB,  "LONG")
+    field(INPC, "$(P)$(R)$(Y) CP")
+    field(NOC,  "$(MAXELEM=2000)")
+    field(INPD, "$(P)$(R)$(Y).NORD")
+    field(FTD,  "LONG")
+
+    field(FTVA, "DOUBLE")
+    field(NOVA, "$(MAXELEM=2000)")
+    field(OUTA, "$(P)$(R)FittedCurveInv$(CH) PP")
+
+    info(DESCRIPTION, "Calc inv fitted line")
+}
+
+record(waveform, "$(P)$(R)FittedCurveInv$(CH)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+## Calculate fitted line using acalc
+record(acalcout, "$(P)$(R)#Fit2$(CH)") {
+    field(INPA, "COEF1")
+    field(INPB, "COEF2")
+    field(INPC, "COEF3")
+    field(INPD, "COEF4")
+    field(INPE, "COEF5")
+    field(INPF, "COEF6")
+    field(INPG, "COEF7")
+    field(INPH, "COEF8")
+    field(INPI, "COEF9")
+    field(INPJ, "COEF10")
+    field(INPK, "COEF11")
+    field(INAA, "$(P)$(R)$(X)")
+    field(NELM, "$(MAXELEM=2000)")
+#    field(NUSE, "10")
+#    field(SIZE, "NUSE")
+    field(CALC, "A+B*AA+C*AA^2+D*AA^3+E*AA^4+F*AA^5+G*AA^6+H*AA^7+I*AA^8+J*AA^9+K*AA^10")
+    field(OUT, "$(P)$(R)FittedCurve2$(CH) PP")
+    field(FLNK, "$(P)$(R)#CalcResiduals$(CH)")
+}
+
+record(waveform, "$(P)$(R)FittedCurve2$(CH)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+## Calculate residuals using acalc
+
+record(acalcout, "$(P)$(R)#CalcResiduals$(CH)") {
+    field(INPA, "COEF1")
+    field(INPB, "COEF2")
+    field(INPC, "COEF3")
+    field(INPD, "COEF4")
+    field(INPE, "COEF5")
+    field(INPF, "COEF6")
+    field(INPG, "COEF7")
+    field(INPH, "COEF8")
+    field(INPI, "COEF9")
+    field(INPJ, "COEF10")
+    field(INPK, "COEF11")
+    field(INAA, "$(P)$(R)$(X)")
+    field(INBB, "$(P)$(R)$(Y)")
+    field(NELM, "$(MAXELEM=2000)")
+#    field(NUSE, "10")
+#    field(SIZE, "NUSE")
+    field(CALC, "BB-(A+B*AA+C*AA^2+D*AA^3+E*AA^4+F*AA^5+G*AA^6+H*AA^7+I*AA^8+J*AA^9+K*AA^10)")
+    field(OUT, "$(P)$(R)Residuals$(CH) PP")
+}
+
+record(waveform, "$(P)$(R)Residuals$(CH)") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+# Remove negatives
+
+
+record(waveform, "$(P)$(R)Neg") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}
+
+record(aSub, "$(P)$(R)#RMNeg$(CH)") {
+    field(DESC, "Remove negatives")
+    field(SNAM, "remove_negatives")
+    field(INPA, "$(P)$(R)Neg CP")
+    field(NOA,  "$(MAXELEM=2000)")
+    field(INPB, "$(P)$(R)Neg.NORD")
+    field(FTB,  "LONG")
+
+    field(FTVA, "DOUBLE")
+    field(NOVA, "$(MAXELEM=2000)")
+    field(OUTA, "$(P)$(R)NoNeg PP")
+}
+
+record(waveform, "$(P)$(R)NoNeg") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=2000)")
+}

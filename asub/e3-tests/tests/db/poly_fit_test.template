@@ -1,0 +1,11 @@
+# Records to test poly_fit
+
+record(waveform, "$(P)$(R)X") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=1000)")
+}
+
+record(waveform, "$(P)$(R)Y") {
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(MAXELEM=1000)")
+}
