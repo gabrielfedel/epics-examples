@@ -1,0 +1,40 @@
+# Create a waveform with 2 positions, both with the same input value
+record(ao, "INPUT") {
+    field(VAL, "2.5")
+}
+
+record(ao, "INPUT2") {
+    field(VAL, "3")
+}
+
+record(waveform, "WAVE2"){
+    field(NELM, "$(SIZE=3)")
+    field(INP,  [1,2])
+    field(FTVL, "DOUBLE")
+}
+
+record(acalcout, "WAVE_create") {
+    field(INAA, "WAVE2")
+    field(INPA, "INPUT CP")
+    field(INPB, "INPUT2 CP")
+    field(NELM, "$(SIZE=3)")
+    field(CALC, "CAT(CAT(AA[0,0],A),B)")
+    field(OUT, "WAVE PP")
+}
+
+record(waveform, "WAVE"){
+    field(NELM, "$(SIZE=3)")
+    field(FTVL, "DOUBLE")
+}
+
+record(acalcout, "WAVE_create2") {
+    field(INAA, "WAVE")
+    field(NELM, "$(SIZE=3)")
+    field(CALC, "AA[1,3]")
+    field(OUT, "WAVE3 PP")
+}
+
+record(waveform, "WAVE3"){
+    field(NELM, "$(SIZE=3)")
+    field(FTVL, "DOUBLE")
+}

@@ -1,0 +1,12 @@
+record(ao, "MYVAL"){
+    field(VAL, "0")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "MYVAL CPP")
+    field(CALC, "ISNAN(SQRT(-1))?1:0")
+    field(OUT, "RESULT PP")
+}
+
+record(ai, "RESULT") {
+}

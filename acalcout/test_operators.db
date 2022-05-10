@@ -1,0 +1,9 @@
+record(ao, "VAL") {
+    field(VAL, "8")
+}
+
+record(acalcout, "CALCULATE") {
+    field(INPA, "VAL")
+    field(NELM, "10")
+    field(CALC, "A^(1/3)")
+}

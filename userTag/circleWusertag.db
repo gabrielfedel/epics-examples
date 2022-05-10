@@ -1,0 +1,94 @@
+# This is a simple example to demonstrate EPICS 7 and QSRV features
+# The database simulates a rotating (unit) vector (circle:angle)
+# The vector has cartesian coordinates circle:x and circle:y, as separate records.
+# Using info tags, a group "circle" is generated from these  x and y (plus the angle, for cross-check)
+# With CA one needs to open two monitors, one for circle:x and one for circle:y
+# As these are transported separately over CA, there is no guarantee that x and y are synchronous.
+# With PVA, circle is transported as one atomic unit and the synchronicity of x and y is guaranteed.
+# rotation of the vector is controlled by:
+# circle:step (step angle) and circle:period (rotation speed, or period in seconds)
+
+
+record(ao, "circle:step") {
+  field(VAL , "1.0")
+  field(DRVL, "0.0")
+  field(DRVH, "359")
+  field(PINI, "YES")
+}
+
+record(ao, "circle:period") {
+  field(VAL , "1.0")
+  field(PINI, "YES")
+  field(OUT , "circle:tick.ODLY NPP")
+}
+
+record(calcout, "circle:tick") {
+  field(INPA,"circle:tick NPP")
+  field(CALC,"A+1")
+  field(ODLY, "1.0")
+  field(OUT , "circle:angle.PROC CA") # loop
+}
+
+record(calc, "circle:angle") {
+  field(PINI, "RUNNING") # bootstrap
+  field(INPA, "circle:angle NPP")
+  field(INPB, "circle:step NPP")
+  field(INPD, "360")
+  field(DESC, "Angle")
+  field(EGU , "deg")
+  field(LOLO, "45")
+  field(LOW , "135")
+  field(HIGH, "225")
+  field(HIHI, "$(HIHIDEF=315)")
+  field(LLSV, "MAJOR")
+  field(LSV , "MINOR")
+  field(HSV , "MINOR")
+  field(HHSV, "MAJOR")
+  field(CALC, "C:=A+B;(C>=D)?C-D:C")
+  field(FLNK, "circle:x")
+  field(PREC, "3")
+  info(Q:group, {
+        "circle":{
+            +atomic:true,
+            "value.angle":{+type:"plain", +channel:"VAL"}
+        }
+  })
+}
+
+record(calc, "circle:x") {
+  field(INPA, "circle:angle NPP")
+  field(CALC, "cos(A*PI/180)")
+  field(TSEL, "circle:angle.TIME")
+  field(FLNK, "circle:y")
+  field(PREC, "3")
+  info(Q:group, {
+        "circle":{
+            "":{+type:"meta", +channel:"VAL"},
+            "value.X":{+type:"plain", +channel:"VAL"}
+        }
+  })
+}
+
+record(calc, "circle:y") {
+  field(INPA, "circle:angle NPP")
+  field(CALC, "sin(A*PI/180)")
+  field(TSEL, "circle:angle.TIME")
+  field(PREC, "3")
+  field(FLNK, "circle:tick")
+  info(Q:group, {
+        "circle":{
+            "value.Y":{+type:"plain", +channel:"VAL",+trigger: "*"}
+        }
+  })
+}
+
+record(longin,"pulseNumber")
+{
+  field(INP,"circle:tick CPP")
+  info(Q:group, {
+        "circle":{
+          "timeStamp.userTag":{+type:"plain",+channel:"VAL"}
+        }
+    })
+
+}

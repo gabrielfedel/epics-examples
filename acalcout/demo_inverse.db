@@ -1,0 +1,57 @@
+record(waveform, "$(P=TEST:)$(R=)CalRaw"){
+    field(NELM, "$(WAVEMAX=100)")
+    field(FTVL, "DOUBLE")
+    field(FLNK, "$(P=TEST:)$(R=)#SetNUSE")
+}
+
+record(waveform, "$(P=TEST:)$(R=)CalEGU"){
+    field(NELM, "$(WAVEMAX=100)")
+    field(FTVL, "DOUBLE")
+    field(FLNK, "$(P=TEST:)$(R=)#SetNUSEInv")
+}
+
+record(calcout, "$(P=TEST:)$(R=)#SetNUSE"){
+    field(INPA, "$(P=TEST:)$(R=)CalRaw.NORD")
+    field(CALC, "A")
+    field(OUT,  "$(P=TEST:)$(R=)#Calib.NUSE PP")
+}
+
+record(acalcout, "$(P=TEST:)$(R=)#Calib") {
+    field(INAA, "$(P=TEST:)$(R=)CalRaw")
+    field(NELM, "$(WAVEMAX=100)")
+    field(NUSE, "$(WAVEMAX=100)")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+    field(OUT, "$(P=TEST:)$(R=)CalFit PP")
+}
+
+record(waveform, "$(P=TEST:)$(R=)CalFit"){
+    field(NELM, "$(WAVEMAX=100)")
+    field(FTVL, "DOUBLE")
+}
+
+record(calcout, "$(P=TEST:)$(R=)#SetNUSEInv"){
+    field(INPA, "$(P=TEST:)$(R=)CalEGU.NORD")
+    field(CALC, "A")
+    field(OUT,  "$(P=TEST:)$(R=)#CalibInv.NUSE PP")
+}
+
+record(acalcout, "$(P=TEST:)$(R=)#CalibInv") {
+    field(INAA, "$(P=TEST:)$(R=)CalEGU")
+    field(NELM, "$(WAVEMAX=100)")
+    field(NUSE, "$(WAVEMAX=100)")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+    field(OUT,  "$(P=TEST:)$(R=)CalFitInv PP")
+}
+
+record(waveform, "$(P=TEST:)$(R=)CalFitInv"){
+    field(NELM, "$(WAVEMAX=100)")
+    field(FTVL, "DOUBLE")
+}
+
+record(lso, "$(P=TEST:)$(R=)#SetCalc"){
+    field(SIZV, "80")
+    field(OMSL, "closed_loop")
+    field(OUT, "$(P=TEST:)$(R=)#Calib.CALC" )
+}

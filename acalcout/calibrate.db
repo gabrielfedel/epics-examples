@@ -251,8 +251,36 @@ record(waveform, "RESULTSQRT"){
 
 ####
 
-record(acalcout, "REPLACENEGATIVE"){
-    field(INAA, "MAG")
+
+
+
+
+
+### Clean a waveform
+
+record(waveform, "EMPTYWAVE"){
+    field(NELM, "0")
+    field(INP, [])
+    field(FTVL, "DOUBLE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "EMPTYWAVE.NORD")
+    field(CALC, "A")
+    field(OUT,  "CLEANWAVE.NUSE PP")
+}
+
+record(acalcout, "CLEANWAVE") {
+    field(INAA, "EMPTYWAVE")
     field(NELM, "10")
-    field(CALC, "L:=0;UNTIL(AA[L,L]<0?0:AA[L,L];L:=L+1;L>10)")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+    field(OUT, "RESULTEMPTYWAVE PP")
+}
+
+record(waveform, "RESULTEMPTYWAVE"){
+    field(NELM, "5")
+    field(INP, [1,2,3,4,5])
+    field(FTVL, "DOUBLE")
 }
