@@ -1,0 +1,34 @@
+# test
+
+record(acalcout, "TEST:GENBIGWAVEXAxis$(CH)") {
+    field(NELM, "35000")
+    field(INPA, "TEST:CALC CP")
+    field(CALC, "IX*A")
+    field(OUT,  "TEST:BIGWAVEXAxis$(CH) PP")
+}
+
+record(waveform, "TEST:BIGWAVEXAxis$(CH)") {
+    field(NELM, "35000")
+}
+
+record(acalcout, "TEST:GENBIGWAVECmp0$(CH)") {
+    field(NELM, "35000")
+    field(INPA, "TEST:CALC CP")
+    field(CALC, "IX*A")
+    field(OUT,  "TEST:BIGWAVECmp0$(CH) PP")
+}
+
+record(waveform, "TEST:BIGWAVECmp0$(CH)") {
+    field(NELM, "35000")
+}
+
+record(acalcout, "TEST:GENBIGWAVECmp1$(CH)") {
+    field(NELM, "35000")
+    field(INPA, "TEST:CALC CP")
+    field(CALC, "IX*A")
+    field(OUT,  "TEST:BIGWAVECmp1$(CH) PP")
+}
+
+record(waveform, "TEST:BIGWAVECmp1$(CH)") {
+    field(NELM, "35000")
+}

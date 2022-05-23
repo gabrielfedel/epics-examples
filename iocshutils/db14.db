@@ -1,0 +1,6 @@
+# test
+
+record(calc, "TEST:CALC"){
+    field("CALC", "VAL+1")    
+    field("SCAN", ".071 second")
+}
