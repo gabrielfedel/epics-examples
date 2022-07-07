@@ -45,7 +45,7 @@ static long polynomial_fit(aSubRecord *psr) {
     n = len_x;
 
 //    double* array_out = (double*)psr->vala;
-   double *array_out[] = {(double*)psr->vala,(double*)psr->valb, (double*)psr->valc, (double*)psr->vald, (double*)psr->vale, (double*)psr->valf, (double*)psr->valg, (double*)psr->valh, (double*)psr->vali, (double*)psr->valj, (double*)psr->valk};
+    double *array_out[] = {(double*)psr->vala,(double*)psr->valb, (double*)psr->valc, (double*)psr->vald, (double*)psr->vale, (double*)psr->valf, (double*)psr->valg, (double*)psr->valh, (double*)psr->vali, (double*)psr->valj, (double*)psr->valk};
     double* array_out2 = (double*)psr->valu;
 
     gsl_vector *y, *c;

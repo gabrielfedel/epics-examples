@@ -1,0 +1,49 @@
+# Test subArray functionality
+
+record(waveform, "WAVE"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "DOUBLE")
+    field(INP,  [1, 2, 3, 4, 5, 6, 7, 8])
+}
+
+record(subArray, "SUB") {
+    field(INP,  "WAVE")
+    field(FTVL, "DOUBLE")
+    field(MALM, "$(SIZE=100)")
+    field(NELM, "1")
+    field(INDX, "0")
+    field(FLNK, "DRIVE")
+}
+
+
+##
+#
+# upload sequence driver calc.
+# Increments until number of value table entries is reached
+#
+record(calcout,"DRIVE"){
+  field(CALC, "B<A?VAL+1:0")
+  field(INPA, "WAVE.NORD")
+  field(INPB, "DRIVE")
+  field(FLNK, "DRIVEB")
+}
+
+record(calcout,"DRIVEB"){
+  field(CALC, "C<A")
+  field(OCAL, "A>B?VAL+1:0")
+  field(INPA, "WAVE.NORD")
+  field(INPB, "DRIVEB.OVAL")
+  field(INPC, "DRIVE")
+  field(DOPT, "Use OCAL")
+  field(OOPT, "When Non-zero")
+  field(OUT,  "SUB.INDX")
+  field(ODLY, "0.2")
+  field(FLNK, "SUB")
+}
+
+
+##
+
+record(ai, "VAL"){
+    field(INP,  "SUB CP")
+}

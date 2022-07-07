@@ -1,0 +1,58 @@
+# "Calibrate" a waveform
+
+
+record(waveform, "WAVE"){
+    field(NELM, "10")
+    field(INP, [1,2,3,4,5,6,7])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "WAVE.NORD")
+    field(CALC, "A")
+    field(OUT,  "WAVE_create.NUSE PP")
+}
+
+
+record(acalcout, "WAVE_create") {
+    field(INAA, "WAVE")
+    field(INPA, "WAVE.NORD")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "SQRT((SUM(AA^2))/A)")
+    field(OUT, "RESULT PP")
+}
+
+
+record(ai, "RESULT"){
+}
+
+record(subArray, "SUBARRAY"){
+    field(INP,  "WAVE")
+    field(MALM, "10")
+    field(INDX, "2")
+    field(NELM, "3")
+}
+
+
+record(acalcout, "WAVE_create2") {
+    field(INAA, "SUBARRAY")
+    field(INPA, "SUBARRAY.NORD")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "SQRT((SUM(AA^2))/A)")
+    field(OUT, "RESULT PP")
+}
+
+
+record(acalcout, "WAVE_create3") {
+    field(INAA, "WAVE")
+    field(NELM, "10")
+    field(NUSE, "7")
+    field(SIZE, "NUSE")
+    field(CALC, "AVG(AA)")
+    field(OUT, "RESULT PP")
+}

@@ -1,0 +1,70 @@
+
+record(waveform, "Power1-S") {
+    field(DESC, "Array of Power Params")
+    field(NELM, "256")
+    field(FTVL, "FLOAT")
+    field(INP,  "[50,500,500,500,600,600,600,600,600,700,830]")
+    field(EGU,  "kW")
+    field(PINI, "1")
+}
+
+record(waveform, "Power2-S") {
+    field(DESC, "Array of Power Params")
+    field(NELM, "256")
+    field(FTVL, "FLOAT")
+    field(INP,  "[10,200,300,300,350,400,400,500,500,600,730]")
+    field(EGU,  "kW")
+    field(PINI, "1")
+}
+
+record(waveform, "Power3-S") {
+    field(DESC, "Array of Power Params")
+    field(NELM, "256")
+    field(FTVL, "FLOAT")
+    field(INP,  "[20,200,200,320,400,420,530,580,610,750]")
+    field(EGU,  "kW")
+    field(PINI, "1")
+}
+
+
+record(waveform, "Power-S") {
+    field(DESC, "Array of Power Params")
+    field(NELM, "256")
+    field(FTVL, "FLOAT")
+    field(EGU,  "kW")
+    field(PINI, "1")
+}
+
+record(mbbi, "CavityModeOpt") {
+    field(DESC, "Select cavity mode")
+    field(ZRVL, "0")
+    field(ZRST, "Mode1")
+    field(ONVL, "1")
+    field(ONST, "Mode2")
+    field(TWVL, "2")
+    field(TWST, "Mode3")
+    field(PINI, "YES")
+    field(VAL, "0")
+}
+
+record(calcout, "Asize") {
+    field(INPA, "CavityModeOpt CP")
+    field(INPB, "Power1-S.NORD CP")
+    field(INPC, "Power2-S.NORD CP")
+    field(INPD, "Power3-S.NORD CP")
+    field(CALC, "(A=0)?B:(A=1)?C:D")
+    field(OUT, "CavSelector.NUSE PP")
+    field(PINI, "YES")
+}
+
+
+record(acalcout, "CavSelector"){
+    field(INPA, "CavityModeOpt CP")
+    field(INAA, "Power1-S CP")
+    field(INBB, "Power2-S CP")
+    field(INCC, "Power3-S CP")
+    field(CALC, "(A=0)?AA:(A=1)?BB:CC")
+    field(NELM, "256")
+    field(OUT, "Power-S PP")
+}
+

@@ -1,0 +1,21 @@
+record(acalcout, "$(P=TEST:)$(R=)#Calc") {
+    field(NELM, "$(WAVEMAX=100)")
+    field(NUSE, "$(WAVEMAX=100)")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+}
+
+record(acalcout, "$(P=TEST:)$(R=)#CpCalc") {
+    field(INAA, "$(P=TEST:)$(R=)#Calc.CALC$")
+    field(NELM, "$(WAVEMAX=100)")
+    field(NUSE, "$(WAVEMAX=100)")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+    field(OUT,  "$(P=TEST:)$(R=)#CalcCopied.CALC$")
+}
+
+
+record(calc, "$(P=TEST:)$(R=)#CalcCopied") {
+    field(CALC, "AA")
+}
+

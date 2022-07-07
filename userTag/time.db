@@ -1,0 +1,21 @@
+record(longin,"pulseNumber")
+{
+  field(INP,"circle:tick CPP")
+  info(Q:group, {
+        "cycle":{
+          "timeStamp.userTag":{+type:"plain",+channel:"VAL"}
+        }
+    })
+
+}
+
+record(longin,"pulseTime")
+{
+  field(INP,"circle:tick CPP")
+  info(Q:group, {
+        "cycle":{
+          "timeStamp.userTag":{+type:"plain",+channel:"VAL"}
+        }
+    })
+
+}

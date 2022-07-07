@@ -4,3 +4,6 @@
 points
 * on this example if you change DELTA and STARTVAL, the PV XAXIS will have
 the resultant waveform
+
+# cavmode.db
+* Example of how to select a waveform using acalcout (provided by Alfio)

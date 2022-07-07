@@ -284,3 +284,7 @@ record(waveform, "RESULTEMPTYWAVE"){
     field(INP, [1,2,3,4,5])
     field(FTVL, "DOUBLE")
 }
+
+record(ai, "TESTLONGSTRING"){
+    field(DESC, "description")
+}
