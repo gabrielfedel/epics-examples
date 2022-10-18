@@ -1,0 +1,3 @@
+record(bo, "MYIOC:bo"){
+    field(HIGH, "0.1")
+}
