@@ -1,0 +1,4 @@
+record(ai, "TEST123PV"){
+    field(VAL, "1")
+    field(TSEL, "FOO:ref.TIME")
+}

@@ -1,0 +1,48 @@
+record(ao, "INPUT") {
+    field(VAL, "2.5")
+    field(FLNK, "SETNUSE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "WAVECIRC.NORD")
+    field(CALC, "A+1")
+    field(OUT, "WAVE_create.NUSE")
+    field(FLNK, "WAVE_create")
+}
+
+record(acalcout, "WAVE_create") {
+    field(INAA, "WAVECIRC")
+    field(INPA, "INPUT")
+    field(INPB, "WAVECIRC.NORD")
+    field(NELM, "$(SIZE=100)")
+    field(NUSE, "3")
+    field(SIZE, "NUSE")
+    field(CALC, "CAT(AA[0,B-1],A)")
+    field(OUT, "WAVECIRC PP")
+}
+
+record(waveform, "WAVECIRC"){
+    field(NELM, "$(SIZE=100)")
+    field(INP,  [0,0])
+    field(PINI, "YES")
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE2")
+}
+
+record(calcout, "SETNUSE2"){
+    field(INPA, "WAVECIRC.NORD")
+    field(CALC, "A")
+    field(OUT, "AVG.NUSE")
+    field(FLNK, "AVG")
+}
+
+
+record(acalcout, "AVG"){
+    field(INAA, "WAVECIRC")
+    field(INPA, "WAVECIRC.NORD")
+    field(NELM, "$(SIZE=100)")
+    field(NUSE, "3")
+    field(CALC, "AVG(AA[2,A-1])")
+}
+
+

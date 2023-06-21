@@ -1,0 +1,18 @@
+record(waveform, "WAVE_"){
+    field(INP,  "[1,55,3.4]")
+    field(NELM, "3")
+    field(FTVL, "DOUBLE")
+}
+record(acalcout, "CALCMAX") {
+    field(NELM, "10")
+    field(INAA, "WAVE_")
+    field(CALC, "AMAX(AA)")
+    field(OUT, "MAX PP")
+}
+
+record(ai, "MAX"){
+
+}
+
+
+

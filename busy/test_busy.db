@@ -1,0 +1,26 @@
+# Simple tests with busy record
+
+# If we set the value without process it will not 
+# execute the forward link
+record(ao, "UNLOCKBUSY"){
+    field(VAL,  "0")
+    field(OUT,  "BUSY")
+}
+
+record(ao, "LOCKBUSY"){
+    field(VAL,  "1")
+    field(OUT,  "BUSY")
+}
+
+record(ao, "PROCBUSY"){
+    field(FLNK,  "BUSY")
+}
+
+record(busy, "BUSY"){
+    field(FLNK, "COUNTBUSY")
+}
+
+record(calc, "COUNTBUSY"){
+    field(VAL,  "0")
+    field(CALC, "VAL+1")
+}

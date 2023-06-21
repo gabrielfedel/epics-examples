@@ -1,0 +1,7 @@
+record(waveform, "WAVE"){
+    field(NELM, "100")
+    field(FTVL, "DOUBLE")
+    field(HOPR, "1")
+    field(LOPR, "-1")
+}
+

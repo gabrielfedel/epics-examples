@@ -1,0 +1,5 @@
+record(calc, "COUNTER"){
+    field(VAL,  "0")
+    field(CALC, "VAL+1")
+}
+

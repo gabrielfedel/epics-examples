@@ -1,0 +1,1 @@
+dbLoadDatabase("example.db")

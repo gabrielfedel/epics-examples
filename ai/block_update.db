@@ -1,0 +1,17 @@
+record(ai, "ESS:AI_UP"){
+    field(INP,  "ESS:REALVALUE CPP")
+    field(SDIS, "ESS:BLOCKAI")
+    field(FLNK, "ESS:CALC_UP")
+}
+
+record(ao, "ESS:REALVALUE"){
+}
+
+record(calc, "ESS:CALC_UP"){
+    field(INPA, "ESS:AI_UP")
+    field(CALC, "A")
+}
+
+record(bo, "ESS:BLOCKAI"){
+
+}

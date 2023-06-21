@@ -1,0 +1,8 @@
+record(ao, "MYVAL"){
+    field(PREC, "12")
+}
+
+record(calcout, "CALCTEST") {
+    field(INPA, "MYVAL CPP")
+    field(CALC, "LA=1?1:0")
+}

@@ -1,0 +1,27 @@
+record(ao, "PVVALUE") {
+    field(PREC,"12")
+    field(FLNK, "PVTESTCOMP PP")
+}
+
+record(compress, "PVTESTCOMP") {
+    field(INP, "PVVALUE")
+    field(ALG, "Circular Buffer")
+    field(NSAM, "100")
+#    field(N, "10")
+    field(FLNK, "AVG.NUSE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "PVTESTCOMP.NUSE")
+    field(CALC, "A")
+    field(OUT, "AVG.NUSE")
+    field(FLNK, "AVG")
+}
+
+
+record(acalcout, "AVG") {
+    field(INAA, "PVTESTCOMP")
+    field(NELM, "100")
+    field(CALC, "AVG(AA)")
+}
+

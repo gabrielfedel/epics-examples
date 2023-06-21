@@ -1,0 +1,31 @@
+# "Calibrate" a waveform
+record(waveform, "WAVE1"){
+    field(NELM, "10")
+    field(INP, [1,1,1,1,1,1,1])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "WAVE_SUM")
+}
+
+record(waveform, "WAVE2"){
+    field(NELM, "10")
+    field(INP, [0,0,2,4,2,0,0])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "WAVE_SUM")
+}
+
+
+record(acalcout, "WAVE_SUM") {
+    field(INAA, "WAVE1")
+    field(INBB, "WAVE2")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA+BB")
+    field(OUT,  "RESULT PP")
+}
+
+record(waveform, "RESULT"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+

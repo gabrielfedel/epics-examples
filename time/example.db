@@ -1,0 +1,16 @@
+# Linear conversion test
+
+record(ai, "TESTTIME") {
+#    field(FLNK, "TEST2TIME")
+    field(PINI, "YES")
+}
+
+record(stringin, "TEST2TIME")
+{
+    field(DESC, "Current time and date")
+    field(DTYP, "Soft Timestamp")
+    field(INP,  "@%Y-%m-%d %H:%M:%S.%06f")
+#    field(INP,  "@%s.%f")
+    field(TSEL, "TESTTIME.TIME CP")
+}
+

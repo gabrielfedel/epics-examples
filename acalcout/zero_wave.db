@@ -1,0 +1,22 @@
+# Zero a waveform
+
+record(acalcout, "ZEROWAVE") {
+    field(INAA, "[0,0]")
+    field(NELM, "2")
+    field(CALC, "AA")
+    field(OUT, "WAVE_ PP")
+}
+
+
+record(acalcout, "ZEROWAVE2") {
+    field(INAA, "[0]")
+    field(NELM, "3")
+    field(CALC, "AA*3")
+    field(OUT, "WAVE_ PP")
+}
+
+
+record(waveform, "WAVE_"){
+    field(NELM, "3")
+    field(FTVL, "DOUBLE")
+}
