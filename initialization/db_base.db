@@ -1,0 +1,9 @@
+# Database if the initial definition
+
+record(ai, "$(P)$(R=)AI"){
+}
+
+record(waveform, "$(P)$(R=)Waveform"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}

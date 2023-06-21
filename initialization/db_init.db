@@ -1,0 +1,10 @@
+
+record("*", "$(P)$(R=)AI"){
+    field(VAL,  "1")
+    field(PINI, "RUNNING")
+}
+
+record("*", "$(P)$(R=)Waveform"){
+    field(INP,  "[0, 2, 3, 5]")
+    field(PINI, "RUNNING")
+}
