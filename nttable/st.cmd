@@ -1,1 +1,1 @@
-dbLoadRecords("simple_table.db", "SIZE=100")
+dbLoadRecords("simple_table.db", "P=TEST:, SIZE=100")

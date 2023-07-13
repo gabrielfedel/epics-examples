@@ -13,3 +13,9 @@ record(waveform, "WAVE2"){
     field(PINI, "YES")
 }
 
+record(waveform, "WAVESTR"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "CHAR")
+    field(INP, [77,111,100,117,108,97,116,111,114,0])
+    field(PINI, "YES")
+}
