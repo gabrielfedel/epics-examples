@@ -1,0 +1,295 @@
+# Select a row from a matrix that is composed by one array with the elements
+# and one with dimension
+
+
+
+# "Calibrate" a waveform
+record(ao, "SLOPE") {
+    field(VAL, "2")
+}
+
+record(ao, "OFFSET") {
+    field(VAL, "5")
+}
+
+record(waveform, "WAVE"){
+    field(NELM, "10")
+    field(INP, [1,2,3,4,5,6,7])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "WAVE.NORD")
+    field(CALC, "A")
+    field(OUT,  "WAVE_create.NUSE PP")
+}
+
+record(ao, "COEF1"){
+    field(VAL,  "0.1")
+}
+record(ao, "COEF2"){
+    field(VAL,  "0.2")
+}
+record(ao, "COEF3"){
+    field(VAL,  "0.3")
+}
+record(ao, "COEF4"){
+    field(VAL,  "0")
+}
+record(ao, "COEF5"){
+    field(VAL,  "0")
+}
+record(ao, "COEF6"){
+    field(VAL,  "0")
+}
+record(ao, "COEF7"){
+    field(VAL,  "0")
+}
+record(ao, "COEF8"){
+    field(VAL,  "0")
+}
+record(ao, "COEF9"){
+    field(VAL,  "0")
+}
+record(ao, "COEF10"){
+    field(VAL,  "0")
+}
+
+record(acalcout, "WAVE_create") {
+    field(INPA, "COEF1")
+    field(INPB, "COEF2")
+    field(INPC, "COEF3")
+    field(INPD, "COEF4")
+    field(INPE, "COEF5")
+    field(INPF, "COEF6")
+    field(INPG, "COEF7")
+    field(INPH, "COEF8")
+    field(INPI, "COEF9")
+    field(INAA, "WAVE")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "A+(B*AA)+C*(AA^2)+(D*AA)^3+(E*AA)^4+(F*AA)^5+(G*AA)^6+(H*AA)^7+(I*AA)^8")
+    field(OUT, "RESULT PP")
+}
+
+
+record(waveform, "RESULT"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+
+record(waveform, "MAG"){
+    field(NELM, "10")
+    field(INP, [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "CALCSIZE")
+}
+
+record(waveform, "ANG"){
+    field(NELM, "10")
+    field(INP, [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "CALCSIZE")
+}
+
+record(calc, "CALCSIZE"){
+    field(INPA, "MAG.NORD")
+    field(INPB, "ANG.NORD")
+    field(CALC, "MIN(A,B)")
+    field(FLNK, "SETSIZE")
+}
+
+record(dfanout, "SETSIZE"){
+    field(DOL,  "CALCSIZE")
+    field(OMSL, "closed_loop")
+    field(OUTA, "MAGRAW.NUSE")
+    field(OUTB, "CALCULATEI.NUSE")
+    field(OUTC, "CALCULATEQ.NUSE")
+    field(FLNK, "MAGRAW")
+}
+
+
+record(bo, "CALEN"){
+    field(VAL, "0")
+}
+
+record(acalcout, "MAGRAW"){
+    field(INPA, "CALEN")
+    field(INAA, "MAG")
+    field(NELM, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "A=0?AA:AA")
+    field(FLNK, "CALCULATEI")
+}
+
+
+record(acalcout, "CALCULATEI") {
+    field(INAA, "MAGRAW.AVAL")
+    field(INBB, "ANG")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA*COS(BB)")
+    field(OUT, "IWAVE PP")
+    field(FLNK, "CALCULATEQ")
+}
+
+record(acalcout, "CALCULATEQ") {
+    field(INAA, "MAGRAW.AVAL")
+    field(INBB, "ANG")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA*SIN(BB)")
+    field(OUT, "QWAVE PP")
+}
+
+record(waveform, "IWAVE"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+record(waveform, "QWAVE"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+### Test using a waveform with the coefficients
+
+record(waveform, "WAVE2"){
+    field(NELM, "10")
+    field(INP, [2,3,4,5,6,7])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE")
+}
+
+record(waveform, "COEF"){
+    field(NELM, "2")
+    field(INP, [0.2,0.3])
+    field(FTVL, "DOUBLE")
+    field(FLNK, "SETNUSE")
+}
+
+record(acalcout, "WAVE_create2") {
+    field(INAA, "WAVE2")
+    field(INBB, "COEF")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "BB[0,0]*AA + B[1,1]")
+    field(OUT, "RESULT2 PP")
+}
+
+
+record(waveform, "RESULT2"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+### Test gradient calibration
+
+#m_calib_grad_kt * sqrt( value * pow(10, m_calib_grad_a/10)   )
+
+record(ao, "GRADA"){
+    field(VAL,  "0.1")
+}
+
+record(ao, "GRADK"){
+    field(VAL,  "0.2")
+}
+
+record(acalcout, "CALCULATEGRAD") {
+    field(INAA, "MAG")
+    field(INPA, "GRADA")
+    field(INPB, "GRADK")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(CALC, "B*SQRT(AA*(10^(A/10)))")
+    field(OUT, "RESULTGRAD PP")
+}
+
+record(waveform, "RESULTGRAD"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+# inverted: pow(value/m_calib_grad_kt,2)/pow(10,(m_calib_grad_a/10))
+
+record(acalcout, "CALCULATEINVGRAD") {
+    field(INAA, "RESULTGRAD")
+    field(INPA, "GRADA")
+    field(INPB, "GRADK")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(CALC, "((AA/B)^2)/(10^(A/10))")
+    field(OUT, "RESULTINVGRAD PP")
+}
+
+record(waveform, "RESULTINVGRAD"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+### test with sqrt calibration
+#  (sqrt(value+pow(m_b,2)/(4*m_a)-m_c ) - m_b/(2*sqrt(m_a))) / sqrt(m_a)
+record(acalcout, "CALCULATESQRT") {
+#    field(INAA, "MAG")
+    field(INAA, "RESULT")
+    field(INPA, "COEF1")
+    field(INPB, "COEF2")
+    field(INPC, "COEF3")
+    field(NELM, "7")
+    field(NUSE, "7")
+    field(CALC, "(SQRT(AA+(B^2)/(4*A)-C)-B/(2*SQRT(A)))/SQRT(A)")
+    field(OUT, "RESULTSQRT PP")
+}
+
+record(waveform, "RESULTSQRT"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
+
+
+####
+
+
+
+
+
+
+### Clean a waveform
+
+record(waveform, "EMPTYWAVE"){
+    field(NELM, "0")
+    field(INP, [])
+    field(FTVL, "DOUBLE")
+}
+
+record(calcout, "SETNUSE"){
+    field(INPA, "EMPTYWAVE.NORD")
+    field(CALC, "A")
+    field(OUT,  "CLEANWAVE.NUSE PP")
+}
+
+record(acalcout, "CLEANWAVE") {
+    field(INAA, "EMPTYWAVE")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA")
+    field(OUT, "RESULTEMPTYWAVE PP")
+}
+
+record(waveform, "RESULTEMPTYWAVE"){
+    field(NELM, "5")
+    field(INP, [1,2,3,4,5])
+    field(FTVL, "DOUBLE")
+}
+
+record(ai, "TESTLONGSTRING"){
+    field(DESC, "description")
+}

@@ -1,0 +1,36 @@
+# Linear conversion test
+
+record("waveform", "$(PEVM)SoftSeq-$(SS)-Labels"){
+    field(INP,  "['Timestamp, EvtCode']")
+    field(FTVL, "STRING")
+    field(NELM, "2")
+    field(PINI, "YES")
+    info(Q:group, {
+        "$(P)SoftSeq-$(SS)":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL"}
+        }
+}
+
+record("*", "$(PEVM)SoftSeq-$(SS)-Timestamp-RB"){
+    info(Q:group, {
+        "$(P)SoftSeq-$(SS)":{
+            "value.Timestamp":{+type:"plain", +channel:"VAL"}
+        }
+}
+
+record("*", "$(PEVM)SoftSeq-$(SS)-EvtCode-RB"){
+    info(Q:group, {
+        "$(P)SoftSeq-$(SS)":{
+            "value.EvtCode":{+type:"plain", +channel:"VAL"}
+        }
+}
+
+record("*", "$(PEVM)SoftSeq-$(SS)-NumOfRuns-I"){
+    field(FLNK, "$(PEVM)#SoftSeq-$(NEXTSS)-Start")
+}
+
+record(fanout, "$(PEVM)#SoftSeq-$(SS)-Start"){
+    field(LNK0, "$(PEVM)SoftSeq-$(SS)-Load-Cmd")
+    field(LNK1, "$(PEVM)SoftSeq-$(SS)-Enable-Cmd")
+}

@@ -1,0 +1,26 @@
+# Test
+
+record(aai, "$(P)Titles_") {
+    field(FTVL, "STRING")
+    field(NELM, "2")
+    field(PINI,"YES")
+    field(INP , {const:["Value", "Other Value"]})
+    info(Q:group, {
+        "$(P)MyNameValue":{
+            +id:"epics:nt/NTNameValue:1.0",
+            "name":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+    field(TPRO, "1")
+}
+
+record(waveform, "$(P)Values_"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1]")
+    info(Q:group, {
+        "$(P)MyNameValue":{
+            "value":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+}

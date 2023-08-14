@@ -1,0 +1,68 @@
+#record(longout, "$(P):ENUM:INDEX") {
+#    field(VAL, "1")
+#    field(PINI, "YES")
+#    info(Q:group, {
+#        "$(P):ENUM":{
+#            +id:"epics:nt/NTEnum:1.0",
+#            "value":{+type:"structure", +id:"enum_t", +putorder:"0"},
+#            "value.index":{+type:"plain", +channel:"VAL"},
+#            "":{+type:"meta", +channel:"VAL"}
+#        }
+#    })
+#}
+#
+#record(aai, "$(P):ENUM:CHOICES") {
+#    field(FTVL, "STRING")
+#    field(NELM, "64")
+#    field(INP , {const:["LebtCpOff", "LebtCpOn", "MebtCpHead", "MebtCpTail", "IonMagSt", "IonMagEnd", "BPulseSt", "BPulseEnd", "RfSt", "BiAcqSt", "BiAcqStAhead", "LebtCpOffAhead", "LebtCpOnAhead", "IonMagStAhead", "IonMagEndAhead", "BPulseStAhead", "BPulseEndAhead", "AcqSync ", "SeqEnd", "F0Hz5", "F1Hz", "F2Hz", "F3Hz5", "F7Hz"]})
+#    info(Q:group, {
+#        "$(P):ENUM":{
+#            +id:"epics:nt/NTEnum:1.0",
+#            "value.choices":{+type:"plain", +channel:"VAL"}
+#        }
+#    })
+#}
+
+#record(stringout, "$(P):ENUM:CHOICE") {
+#    info(Q:group, {
+#        "$(P):ENUM":{
+#            +id:"epics:nt/NTEnum:1.0",
+#            "value":{+type:"structure", +channel:"VAL", +id:"enum_t", +putorder:"0"},
+#        }
+#    })
+#}
+
+record(longout, "$(P):ENUM:INDEX") {
+    field(VAL, "1")
+    field(PINI, "YES")
+    info(Q:group, {
+        "$(P):ENUM":{
+            +id:"epics:nt/NTEnum:1.0",
+            "value":{+type:"structure", +id:"enum_t"},
+            "value.index":{+type:"plain", +channel:"VAL", +putorder:"0"},
+            "":{+type:"meta", +channel:"VAL"}
+        }
+    })
+}
+
+record(aai, "$(P):ENUM:CHOICES") {
+    field(FTVL, "STRING")
+    field(NELM, "64")
+    field(INP , {const:["ZERO", "ONE"]})
+    info(Q:group, {
+        "$(P):ENUM":{
+            +id:"epics:nt/NTEnum:1.0",
+            "value.choices":{+type:"plain", +channel:"VAL"}
+        }
+    })
+}
+
+record(stringout, "$(P):ENUM:CHOICE") {
+    info(Q:group, {
+        "$(P):ENUM":{
+            +id:"epics:nt/NTEnum:1.0",
+            "value":{+type:"structure", +id:"enum_t"},
+            "value.choice":{+type:"plain", +channel:"VAL", +putorder:"0"}
+        }
+    })
+}

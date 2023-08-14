@@ -1,0 +1,16 @@
+record(bi, "BLOCK")
+{
+#    field(VAL,  "1")
+    field(DESC, "Shows if the comms hash is correct")
+    field(ONAM, "Correct")
+    field(ZNAM, "Incorrect")
+    field(ZSV,      "MAJOR")
+}
+
+record(bi, "PVBLOCKED")
+{
+    field(DISS, "INVALID")
+    field(DISV, "0")
+    field(SDIS, "BLOCK")
+}
+
