@@ -1,3 +1,4 @@
 function(polynomial_fit);
 function(fitted_curve);
 function(remove_negatives);
+function(QSRV2_image_demo)
