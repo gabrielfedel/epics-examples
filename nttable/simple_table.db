@@ -20,7 +20,7 @@ record(waveform, "$(P)WAVE"){
     field(INP , "[0,1,2]")
     info(Q:group, {
         "$(P)MyTable":{
-            "value.values":{+type:"plain", +channel:"VAL", +putorder:1}
+            "value.values":{+type:"plain", +channel:"VAL", +putorder:2}
         }
     })
 }
@@ -32,7 +32,15 @@ record(waveform, "$(P)WAVE2"){
     field(INP , "[0,1,3]")
     info(Q:group, {
         "$(P)MyTable":{
-            "value.other_values":{+type:"plain", +channel:"VAL", +putorder:1}
+            "value.other_values":{+type:"plain", +channel:"VAL", +putorder:3}
+        }
+    })
+}
+
+record(stringout, "$(P)Descriptor") {
+    info(Q:group, {
+        "$(P)MyTable":{
+            "descriptor":{+type:"plain", +channel:"VAL", +putorder:4}
         }
     })
 }
