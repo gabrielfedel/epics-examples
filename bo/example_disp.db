@@ -1,0 +1,6 @@
+record(bo, "MYIOC:bo"){
+    field(VAL,  "0")
+    field(ONAM, "Enable")
+    field(ZNAM, "Disable")
+    field(DISP, "1")
+}
