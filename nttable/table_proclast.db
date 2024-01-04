@@ -1,0 +1,50 @@
+# Test with NTtable that will process a record at the end of the writting
+
+record(aai, "$(P)Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "2")
+    field(PINI,"YES")
+    field(INP , {const:["Values", "Other Values"]})
+    info(Q:group, {
+        "$(P)MyTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+}
+
+record(waveform, "$(P)WAVE"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "CHAR")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.values":{+type:"plain", +channel:"VAL", +putorder:2}
+        }
+    })
+}
+
+
+record(waveform, "$(P)WAVE2"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "CHAR")
+    field(INP , "[0,1,3]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.other_values":{+type:"plain", +channel:"VAL", +putorder:3}
+        }
+    })
+}
+
+record(longout, "$(P)Save") {
+    field(MDEL, "-1") # ensure we always trigger group monitor
+    field(TPRO, "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "_save":{+type:"proc",
+                     +channel:"VAL",
+                     +putorder:5,
+                     +trigger:"*"}
+        }
+    })
+}
