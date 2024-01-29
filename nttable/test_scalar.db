@@ -1,0 +1,113 @@
+# Test with NTtable to use phoebus table plugin
+
+record(aai, "$(P)Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "10")
+    field(PINI,"YES")
+    field(INP , {const:["Col0", "Col1","Col2","Col3","Col4","Col5","Col6","Col7","Col8","Col9"]})
+    info(Q:group, {
+        "$(P)MyTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+}
+
+record(ao, "$(P)Col0"){
+    field(VAL, "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col0":{+type:"plain", +channel:"VAL", +putorder:2}
+        }
+    })
+}
+
+
+record(ao, "$(P)Col1"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col1":{+type:"plain", +channel:"VAL", +putorder:3}
+        }
+    })
+}
+
+record(ao, "$(P)Col2"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col2":{+type:"plain", +channel:"VAL", +putorder:4}
+        }
+    })
+}
+
+record(ao, "$(P)Col3"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col3":{+type:"plain", +channel:"VAL", +putorder:5}
+        }
+    })
+}
+
+record(ao, "$(P)Col4"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col4":{+type:"plain", +channel:"VAL", +putorder:6}
+        }
+    })
+}
+
+record(ao, "$(P)Col5"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col5":{+type:"plain", +channel:"VAL", +putorder:7}
+        }
+    })
+}
+
+record(ao, "$(P)Col6"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col6":{+type:"plain", +channel:"VAL", +putorder:8}
+        }
+    })
+}
+
+record(ao, "$(P)Col7"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col7":{+type:"plain", +channel:"VAL", +putorder:9}
+        }
+    })
+}
+
+record(ao, "$(P)Col8"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col8":{+type:"plain", +channel:"VAL", +putorder:10}
+        }
+    })
+}
+
+record(ao, "$(P)Col9"){
+    field(VAL , "1")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col9":{+type:"plain", +channel:"VAL", +putorder:11}
+        }
+    })
+}
+
+record(stringout, "$(P)Descriptor") {
+    info(Q:group, {
+        "$(P)MyTable":{
+            "descriptor":{+type:"plain", +channel:"VAL", +putorder:12}
+        }
+    })
+}

@@ -1,0 +1,4 @@
+record(bi, "TESTBI"){
+    field(VAL, "1")
+    field(PINI, "YES")
+}

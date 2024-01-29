@@ -1,0 +1,7 @@
+record(bo, "PV1") {
+}
+
+record(calcout, "PV2") {
+    field(INPA, "PV1 CP")
+    field(CALC, "A=0?0:VAL")
+}

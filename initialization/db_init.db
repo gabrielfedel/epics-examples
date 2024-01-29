@@ -8,3 +8,8 @@ record("*", "$(P)$(R=)Waveform"){
     field(INP,  "[0, 2, 3, 5]")
     field(PINI, "RUNNING")
 }
+
+record("*", "$(P)$(R=)WaveformChar"){
+    field(INP,  "{const : 'aloha'}")
+    field(PINI, "RUNNING")
+}

@@ -1,0 +1,12 @@
+# 
+
+record(calc, "CALC2") {
+    field(TPRO, "1")
+    field(CALC, "2+3")
+}
+
+
+record(calc, "MyCALC") {
+    field(INPA, "CALC2 PP")
+    field(CALC, "A+4")
+}

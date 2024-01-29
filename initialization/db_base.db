@@ -7,3 +7,9 @@ record(waveform, "$(P)$(R=)Waveform"){
     field(NELM, "10")
     field(FTVL, "DOUBLE")
 }
+
+record(waveform, "$(P)$(R=)WaveformChar"){
+    field(INP,  "{const : 'aloha1'}")
+    field(NELM, "10")
+    field(FTVL, "CHAR")
+}
