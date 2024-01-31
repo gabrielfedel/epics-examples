@@ -5,4 +5,6 @@ epicsEnvSet("IOCNAME", "TESTIOC")
 epicsEnvSet("IOCDIR", "TESTIOC")
 iocshLoad("$(essioc_DIR)/common_config.iocsh")
 
+afterInit("fdbrestore("$(AS_TOP)/$(IOCNAME)/save/settings.sav")")
+
 dbLoadDatabase("ai.db")
