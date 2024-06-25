@@ -1,0 +1,7 @@
+file col.template
+{
+    pattern {P, N}
+            {$(P), 0}
+            {$(P), 1}
+
+}

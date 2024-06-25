@@ -1,0 +1,13 @@
+record(aao, "$(P)Col$(N)"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(DOL , "[0]")
+    field(PINI, "YES")
+    field(OMSL,"closed_loop")
+    field(TPRO, 1)
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col$(N)":{+type:"plain", +channel:"VAL", +putorder:$(N)}
+        }
+    })
+}

@@ -1,0 +1,345 @@
+# Test with NTtable to use phoebus table plugin
+
+record(aai, "$(P)Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "30")
+    field(PINI,"YES")
+    field(INP , {const:["Col0","Col1","Col2","Col3","Col4","Col5","Col6","Col7","Col8","Col9","Col10","Col11","Col12","Col13","Col14","Col15","Col16","Col17","Col18","Col19","Col20","Col21","Col22","Col23","Col24","Col25","Col26","Col27","Col28","Col29"]})
+    info(Q:group, {
+        "$(P)MyTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:1}
+        }
+    })
+}
+
+record(waveform, "$(P)Col0"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col0":{+type:"plain", +channel:"VAL", +putorder:2}
+        }
+    })
+}
+
+
+record(waveform, "$(P)Col1"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col1":{+type:"plain", +channel:"VAL", +putorder:3}
+        }
+    })
+}
+
+record(waveform, "$(P)Col2"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col2":{+type:"plain", +channel:"VAL", +putorder:4}
+        }
+    })
+}
+
+record(waveform, "$(P)Col3"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col3":{+type:"plain", +channel:"VAL", +putorder:5}
+        }
+    })
+}
+
+record(waveform, "$(P)Col4"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col4":{+type:"plain", +channel:"VAL", +putorder:6}
+        }
+    })
+}
+
+record(waveform, "$(P)Col5"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col5":{+type:"plain", +channel:"VAL", +putorder:7}
+        }
+    })
+}
+
+record(waveform, "$(P)Col6"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col6":{+type:"plain", +channel:"VAL", +putorder:8}
+        }
+    })
+}
+
+record(waveform, "$(P)Col7"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col7":{+type:"plain", +channel:"VAL", +putorder:9}
+        }
+    })
+}
+
+record(waveform, "$(P)Col8"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col8":{+type:"plain", +channel:"VAL", +putorder:10}
+        }
+    })
+}
+
+record(waveform, "$(P)Col9"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col9":{+type:"plain", +channel:"VAL", +putorder:11}
+        }
+    })
+}
+
+record(waveform, "$(P)Col10"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col10":{+type:"plain", +channel:"VAL", +putorder:12}
+        }
+    })
+}
+
+record(waveform, "$(P)Col11"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col11":{+type:"plain", +channel:"VAL", +putorder:13}
+        }
+    })
+}
+
+record(waveform, "$(P)Col12"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col12":{+type:"plain", +channel:"VAL", +putorder:14}
+        }
+    })
+}
+
+record(waveform, "$(P)Col13"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col13":{+type:"plain", +channel:"VAL", +putorder:15}
+        }
+    })
+}
+
+record(waveform, "$(P)Col14"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col14":{+type:"plain", +channel:"VAL", +putorder:16}
+        }
+    })
+}
+
+record(waveform, "$(P)Col15"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col15":{+type:"plain", +channel:"VAL", +putorder:17}
+        }
+    })
+}
+
+record(waveform, "$(P)Col16"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col16":{+type:"plain", +channel:"VAL", +putorder:18}
+        }
+    })
+}
+
+record(waveform, "$(P)Col17"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col17":{+type:"plain", +channel:"VAL", +putorder:19}
+        }
+    })
+}
+
+record(waveform, "$(P)Col18"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col18":{+type:"plain", +channel:"VAL", +putorder:20}
+        }
+    })
+}
+
+record(waveform, "$(P)Col19"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[0,1,2]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col19":{+type:"plain", +channel:"VAL", +putorder:21}
+        }
+    })
+}
+
+record(waveform, "$(P)Col20"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col20":{+type:"plain", +channel:"VAL", +putorder:22}
+        }
+    })
+}
+
+record(waveform, "$(P)Col21"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col21":{+type:"plain", +channel:"VAL", +putorder:23}
+        }
+    })
+}
+
+record(waveform, "$(P)Col22"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col22":{+type:"plain", +channel:"VAL", +putorder:24}
+        }
+    })
+}
+
+record(waveform, "$(P)Col23"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col23":{+type:"plain", +channel:"VAL", +putorder:25}
+        }
+    })
+}
+
+record(waveform, "$(P)Col24"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col24":{+type:"plain", +channel:"VAL", +putorder:26}
+        }
+    })
+}
+
+record(waveform, "$(P)Col25"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col25":{+type:"plain", +channel:"VAL", +putorder:27}
+        }
+    })
+}
+
+record(waveform, "$(P)Col26"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col26":{+type:"plain", +channel:"VAL", +putorder:28}
+        }
+    })
+}
+
+record(waveform, "$(P)Col27"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col27":{+type:"plain", +channel:"VAL", +putorder:29}
+        }
+    })
+}
+
+record(waveform, "$(P)Col28"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col28":{+type:"plain", +channel:"VAL", +putorder:30}
+        }
+    })
+}
+
+record(waveform, "$(P)Col29"){
+    field(NELM, "$(SIZE=100)")
+    field(FTVL, "LONG")
+    field(INP , "[]")
+    info(Q:group, {
+        "$(P)MyTable":{
+            "value.Col29":{+type:"plain", +channel:"VAL", +putorder:31}
+        }
+    })
+}
