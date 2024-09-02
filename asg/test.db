@@ -1,0 +1,29 @@
+# PV with ASG
+record(bo, "test1") {
+    field(DESC, "Test pv")
+    field(VAL,  "0")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+
+    field(ASG,  "MANUAL-ALLOWED")
+}
+
+# PVs used to allow manual control of PV
+record(calcout, "allow:manual:#calccpy") {
+    field(DESC, "Calc is allow manual")
+    field(CALC, "A")
+    # A - PV from different IOC - use CP or SCAN
+    field(INPA, "allow:manual CP")
+    #field(SCAN, "1 second")
+    field(IVOA, "Set output to IVOV")
+    field(IVOV, "1")
+    field(PINI, "YES")
+    field(OUT,  "allow:manual:cpy PP")
+}
+
+record(bo, "allow:manual:cpy") {
+    field(DESC, "Allow manual copy")
+    field(VAL,  "0")
+    field(ZNAM, "Not allowed")
+    field(ONAM, "Allowed")
+}
