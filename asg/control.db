@@ -1,0 +1,6 @@
+record(bo, "allow:manual") {
+    field(DESC, "Allow manual")
+    field(VAL,  "0")
+    field(ZNAM, "Not allowed")
+    field(ONAM, "Allowed")
+}
