@@ -7,7 +7,7 @@ record(aai, "$(P)Titles") {
     info(Q:group, {
         "$(P)MyTable":{
             +id:"epics:nt/NTTable:1.0",
-            "labels":{+type:"plain", +channel:"VAL", +putorder:10}
+            "labels":{+type:"plain", +channel:"VAL", +putorder:100}
         }
     })
 }
@@ -20,7 +20,7 @@ record(longout, "$(P)Save") {
         "$(P)MyTable":{
             "_save":{+type:"proc",
                      +channel:"VAL",
-                     +putorder:99,
+                     +putorder:101,
                      +trigger:"*"}
         }
     })
