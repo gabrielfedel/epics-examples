@@ -104,3 +104,5 @@ dbLoadRecords("col.template", "P=$(P):,N=96, SIZE=$(SIZE)")
 dbLoadRecords("col.template", "P=$(P):,N=97, SIZE=$(SIZE)")
 dbLoadRecords("col.template", "P=$(P):,N=98, SIZE=$(SIZE)")
 dbLoadRecords("col.template", "P=$(P):,N=99, SIZE=$(SIZE)")
+
+iocInit()
