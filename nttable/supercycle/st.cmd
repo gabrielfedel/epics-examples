@@ -1,5 +1,5 @@
 epicsEnvSet("SIZE","500")
-epicsEnvSet("P","BEAMPROD:TEST")
+epicsEnvSet("P","TEST")
 
 
 
