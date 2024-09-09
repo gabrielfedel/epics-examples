@@ -1,12 +1,12 @@
 record(aao, "$(P)Col$(N)"){
     field(NELM, "$(SIZE=100)")
-    field(FTVL, "LONG")
-    field(DOL , "[0]")
+    field(FTVL, "FLOAT")
+    field(DOL , "[0.1]")
     field(PINI, "YES")
     field(OMSL,"closed_loop")
     field(TPRO, 1)
     info(Q:group, {
-        "$(P)MyTable":{
+        "$(P)ScTabNt-SP":{
             "value.Col$(N)":{+type:"plain", +channel:"VAL", +putorder:$(N)}
         }
     })

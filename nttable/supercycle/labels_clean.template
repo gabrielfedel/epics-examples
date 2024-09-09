@@ -1,0 +1,27 @@
+record(aai, "$(P)Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "100")
+    field(PINI, "YES")
+    field(INP , {const:["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]})
+    field(TPRO, 1)
+    info(Q:group, {
+        "$(P)ScTabNt-SP":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL", +putorder:10}
+        }
+    })
+}
+
+
+record(longout, "$(P)Save") {
+    field(MDEL, "-1") # ensure we always trigger group monitor
+    field(TPRO, "1")
+    info(Q:group, {
+        "$(P)ScTabNt-SP":{
+            "_save":{+type:"proc",
+                     +channel:"VAL",
+                     +putorder:99,
+                     +trigger:"*"}
+        }
+    })
+}
