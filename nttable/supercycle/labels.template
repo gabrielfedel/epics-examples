@@ -17,7 +17,7 @@ record(longout, "$(P)Save") {
     field(MDEL, "-1") # ensure we always trigger group monitor
     field(TPRO, "1")
     info(Q:group, {
-        "$(P)MyTable":{
+        "$(P)ScTabNt-SP":{
             "_save":{+type:"proc",
                      +channel:"VAL",
                      +putorder:101,
