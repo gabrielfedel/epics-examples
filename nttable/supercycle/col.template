@@ -1,7 +1,7 @@
 record(aao, "$(P)Col$(N)"){
     field(NELM, "$(SIZE=100)")
     field(FTVL, "FLOAT")
-    field(DOL , "[0.1]")
+    field(DOL , "[1,2]")
     field(PINI, "YES")
     field(OMSL,"closed_loop")
     field(TPRO, 1)

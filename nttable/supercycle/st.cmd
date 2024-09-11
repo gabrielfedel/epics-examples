@@ -3,7 +3,7 @@ epicsEnvSet("P","TEST")
 
 
 
-dbLoadRecords("labels_clean.template", "P=$(P):")
+dbLoadRecords("labels.template", "P=$(P):")
 dbLoadRecords("col.template", "P=$(P):,N=0, SIZE=$(SIZE)")
 dbLoadRecords("col.template", "P=$(P):,N=1, SIZE=$(SIZE)")
 dbLoadRecords("col.template", "P=$(P):,N=2, SIZE=$(SIZE)")
