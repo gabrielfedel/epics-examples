@@ -7,11 +7,20 @@ record(aai, "$(P)Titles") {
     info(Q:group, {
         "$(P)ScTabNt-SP":{
             +id:"epics:nt/NTTable:1.0",
-            "labels":{+type:"plain", +channel:"VAL", +putorder:100}
+            "labels":{+type: "plain", +channel:"VAL", +putorder:100}
         }
     })
 }
 
+record(stringin, "$(P)Description") {
+    field(VAL,  "Table for tests")
+    info(Q:group, {
+        "$(P)ScTabNt-SP":{
+            +id:"epics:nt/NTTable:1.0",
+            "descriptor":{+channel:"VAL"}
+        }
+    })
+}
 
 record(longout, "$(P)Save") {
     field(MDEL, "-1") # ensure we always trigger group monitor
@@ -20,7 +29,7 @@ record(longout, "$(P)Save") {
         "$(P)ScTabNt-SP":{
             "_save":{+type:"proc",
                      +channel:"VAL",
-                     +putorder:101,
+                     +putorder:102,
                      +trigger:"*"}
         }
     })
