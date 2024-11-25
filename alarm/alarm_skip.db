@@ -1,16 +1,16 @@
 record(calcout, "$(P)$(R=)#AlarmDiscSkip") {
-    field(INPA, "$(PV) CP")
+    field(INPA, "$(PV) CP MSS")
     field(INPB, "$(PV).STAT")
     field(INPC, "$(PV).SEVR")
     field(CALC, "B=18&&C=3?0:1")
     field(OCAL, "A")
-    field(OOPT, "When Non-Zero")
+    field(OOPT, "When Non-zero")
     field(DOPT, "Use OCAL")
-    field(OUT,  "$(P)$(R=)$(PV)Copy")
+    field(OUT,  "$(P)$(R=)Copy PP MSS")
 }
 
 
-record(bi, "$(P)$(R=)$(PV)Copy") {
+record(bi, "$(P)$(R=)Copy") {
     field(ONAM, "True")
     field(ZNAM, "False")
 }

@@ -1,0 +1,6 @@
+record(bi, "MYPVFORTEST"){
+    field(ONAM, "True")
+    field(ZNAM, "False")
+    field(OSV,  "MAJOR")
+    field(PINI, "YES")
+}
