@@ -29,3 +29,17 @@ record(waveform, "RESULT"){
     field(FTVL, "DOUBLE")
 }
 
+record(acalcout, "WAVE_SUM2") {
+    field(INAA, "WAVE1 CP")
+    field(NELM, "10")
+    field(NUSE, "10")
+    field(SIZE, "NUSE")
+    field(CALC, "AA+10")
+    field(OUT,  "RESULT2 PP")
+}
+
+record(waveform, "RESULT2"){
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+}
+
