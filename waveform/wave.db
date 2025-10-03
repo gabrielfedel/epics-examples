@@ -1,4 +1,4 @@
-record(waveform, "WAVE"){
+record(waveform, "GSF:WAVE"){
     field(NELM, "$(SIZE=100)")
     field(FTVL, "DOUBLE")
 }
