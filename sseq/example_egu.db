@@ -1,0 +1,61 @@
+
+# 
+record(stringin, "$(P)$(R)#UnitStr") {
+    field(DESC, "Engineer unit string")
+}
+
+record(mbbo, "$(P)$(R)UnitSrcSel") {
+    field(DESC, "Unit string selector")
+    field(ZRST, "")
+    field(ZRVL, "0")
+    field(ONST, "$(EGU1=ADC Counts)")
+    field(ONVL, "1")
+    field(TWST, "$(EGU2=Volts)")
+    field(TWVL, "2")
+    field(THST, "$(EGU3=Watts)")
+    field(THVL, "3")
+    field(FLNK, "$(P)$(R)#SetUnitStrSeq")
+    field(VAL,  "1")
+}
+
+record(sseq, "$(P)$(R)#SetUnitStrSeq") {
+    field(DESC, "Set unit str based on selection")
+    field(SELM, "Specified")
+    field(SELL, "$(P)$(R)UnitSrcSel")
+    field(STR1, "$(EGU1=ADC Counts)")
+    field(LNK1, "$(P)$(R)#UnitStr PP")
+    field(STR2, "$(EGU2=Volts)")
+    field(LNK2, "$(P)$(R)#UnitStr PP")
+    field(STR3, "$(EGU3=Watts)")
+    field(LNK3, "$(P)$(R)#UnitStr PP")
+    field(STR4, "$(EGU4=Megavolts per meter)")
+    field(LNK4, "$(P)$(R)#UnitStr PP")
+    field(FLNK, "$(P)$(R)#UnitStrSeq")
+}
+
+record(sseq, "$(P)$(R)#UnitStrSeq") {
+    field(DESC, "Send unit to all specified pvs")
+    field(SELM, "All")
+    field(DOL1, "$(P)$(R)#UnitStr")
+    field(LNK1, "$(P)$(R)Test1.EGU")
+    field(DOL2, "$(P)$(R)#UnitStr")
+    field(LNK2, "$(P)$(R)Test2.EGU")
+    field(DOL3, "$(P)$(R)#UnitStr")
+    field(LNK3, "$(P)$(R)Test3.EGU")
+}
+
+# Output records to demonstrate the unit string being set
+record(ao, "$(P)$(R)Test1") {
+    field(DESC, "Example test record")
+    field(VAL,  "1")
+}
+
+record(ao, "$(P)$(R)Test2") {
+    field(DESC, "Example test record")
+    field(VAL,  "2")
+}
+
+record(ao, "$(P)$(R)Test3") {
+    field(DESC, "Example test record")
+    field(VAL,  "3")
+}
