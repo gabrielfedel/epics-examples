@@ -1,0 +1,105 @@
+# Example EPICS database for demonstrating sseq record functionality
+# of setting record triggering between CP and SCAN
+
+# Example counter, triggering every .1
+record(calc, "$(P)$(R)Counter") {
+    field(DESC, "Counter")
+    field(CALC, "VAL+1")
+    field(SCAN, ".1 second")
+    field(VAL,  "0")
+}
+
+# Record for which we set triggering
+record(calcout, "$(P)$(R=)#Counter2") {
+    field(CALC, "A")
+    # Input link will be set to either
+    # Counter or Counter CP based on selection,
+    # and will be used to trigger the record
+    field(INPA, "$(P)$(R)Counter")
+    # Scan will be set to also by the selection
+    field(SCAN, "Passive")
+    field(OUT,  "$(P)$(R)Counter2 PP")
+}
+
+# Final output record
+record(ao, "$(P)$(R=)Counter2") {
+    field(DESC, "Counter")
+}
+
+# Record-placeholder for the input string
+record(stringout, "$(P)$(R)InputString") {
+    field(DESC, "Place to set the input string")
+}
+
+# Main selector of triggering mechanism
+record(mbbo, "$(P)$(R)SetUpdateRate") {
+    field(DESC, "Set update rate")
+    field(ZRST, "Passive")
+    field(ZRVL, "0")
+    field(ONST, "CP Link")
+    field(ONVL, "1")
+    field(TWST, "1 second")
+    field(TWVL, "2")
+    field(THST, "2 second")
+    field(THVL, "3")
+    field(FRST, "5 second")
+    field(FRVL, "4")
+    field(OUT,  "$(P)$(R)#MaskFanout PP")
+}
+
+# Fanout to prepare selectors for both input string and scan
+record(fanout, "$(P)$(R)#MaskFanout") {
+    field(DESC, "Mask fanout")
+    field(SELM, "All")
+    # Prepare setting input link (INPA)
+    field(LNK1, "$(P)$(R)#CalcInputStrMask")
+    # Prepare setting SCAN
+    field(LNK2, "$(P)$(R)#CalcScanMask")
+}
+
+record(calc, "$(P)$(R)#CalcInputStrMask") {
+    field(DESC, "Calculate input string mask")
+    field(CALC, "A=1?2:1")
+    field(INPA, "$(P)$(R)SetUpdateRate")
+    field(FLNK, "$(P)$(R)#SetInputStr")
+}
+
+record(calc, "$(P)$(R)#CalcScanMask") {
+    field(DESC, "Calculate scan mask")
+    field(CALC, "A=0||A=1?1:A")
+    field(INPA, "$(P)$(R)SetUpdateRate")
+    field(FLNK, "$(P)$(R)#SetScan")
+}
+
+record(sseq, "$(P)$(R)#SetInputStr") {
+    field(DESC, "Set input string")
+    field(SELM, "Specified")
+    field(SELL, "$(P)$(R)#CalcInputStrMask")
+    field(STR1, "$(P)$(R)Counter")
+    field(LNK1, "$(P)$(R)InputString PP")
+    field(STR2, "$(P)$(R)Counter CP")
+    field(LNK2, "$(P)$(R)InputString PP")
+    field(FLNK, "$(P)$(R)#SetLink")
+}
+
+record(sseq, "$(P)$(R)#SetLink") {
+    field(SELM, "All")
+    field(DOL1, "$(P)$(R)InputString")
+    # It is not possible to change link fields with a database link, 
+    # but it is possible with channel access
+    # To make it work, add CA flag to the link
+    field(LNK1, "$(P)$(R)#Counter2.INPA CA")
+}
+
+record(sseq, "$(P)$(R)#SetScan") {
+    field(SELM, "Specified")
+    field(SELL, "$(P)$(R)#CalcScanMask")
+    field(STR1, "Passive")
+    field(LNK1, "$(P)$(R)#Counter2.SCAN")
+    field(STR2, "1 second")
+    field(LNK2, "$(P)$(R)#Counter2.SCAN")
+    field(STR3, "2 second")
+    field(LNK3, "$(P)$(R)#Counter2.SCAN")
+    field(STR4, "5 second")
+    field(LNK4, "$(P)$(R)#Counter2.SCAN")
+}

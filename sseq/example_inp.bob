@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>sseq Input Link Example</name>
+  <macros>
+    <P>test:</P>
+    <R>:</R>
+  </macros>
+  <height>500</height>
+  <background_color>
+    <color name="Interface Background" red="220" green="225" blue="221">
+    </color>
+  </background_color>
+  <widget type="rectangle" version="2.0.0">
+    <name>Titlebar</name>
+    <class>TITLE-BAR</class>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>750</width>
+    <height use_class="true">50</height>
+    <line_width use_class="true">0</line_width>
+    <background_color use_class="true">
+      <color name="Standard_Title_Bar" red="151" green="188" blue="202">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Title</name>
+    <class>_ESS Class Title</class>
+    <text>sseq Input Link Example</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>600</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="_ESS Title" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Black" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Group Background_2</name>
+    <x>10</x>
+    <y>80</y>
+    <width>690</width>
+    <height>310</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color name="Group_Outline" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Group_Background" red="200" green="205" blue="201">
+      </color>
+    </background_color>
+    <corner_width>10</corner_width>
+    <corner_height>10</corner_height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>BGGrey01-title_8</name>
+    <text>Example</text>
+    <x>10</x>
+    <y>80</y>
+    <width>690</width>
+    <height>40</height>
+    <font>
+      <font name="_ESS Header 2" family="Source Sans Pro" style="BOLD" size="21.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Background_1</name>
+    <x>30</x>
+    <y>120</y>
+    <width>650</width>
+    <height>230</height>
+    <line_width>0</line_width>
+    <line_color>
+      <color name="Group_Outline" red="150" green="155" blue="151">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Background" red="220" green="225" blue="221">
+      </color>
+    </background_color>
+    <corner_width>5</corner_width>
+    <corner_height>5</corner_height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_4</name>
+    <pv_name>$(P)$(R)Counter</pv_name>
+    <x>200</x>
+    <y>160</y>
+    <width>120</width>
+    <height>30</height>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box_1</name>
+    <pv_name>$(P)$(R)SetUpdateRate</pv_name>
+    <x>200</x>
+    <y>300</y>
+    <width>120</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Update_5</name>
+    <pv_name>$(P)$(R)InputString</pv_name>
+    <x>520</x>
+    <y>160</y>
+    <width>120</width>
+    <height>30</height>
+    <background_color>
+      <color name="Read_Background" red="230" green="235" blue="232">
+      </color>
+    </background_color>
+    <wrap_words>true</wrap_words>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Update_6</name>
+    <pv_name>$(P)$(R)#Counter2.SCAN</pv_name>
+    <x>520</x>
+    <y>260</y>
+    <width>120</width>
+    <height>30</height>
+    <background_color>
+      <color name="Read_Background" red="230" green="235" blue="232">
+      </color>
+    </background_color>
+    <wrap_words>true</wrap_words>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Input String</text>
+    <x>370</x>
+    <y>160</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>Counter 2 Calc SCAN readback:</text>
+    <x>370</x>
+    <y>260</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_12</name>
+    <pv_name>$(P)$(R)Counter2</pv_name>
+    <x>200</x>
+    <y>210</y>
+    <width>120</width>
+    <height>30</height>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>Counter</text>
+    <x>50</x>
+    <y>160</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>Counter 2</text>
+    <x>50</x>
+    <y>210</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>Update Rate Mode:</text>
+    <x>50</x>
+    <y>300</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Update_14</name>
+    <pv_name>$(P)$(R)#Counter2.INPA</pv_name>
+    <x>520</x>
+    <y>210</y>
+    <width>120</width>
+    <height>30</height>
+    <background_color>
+      <color name="Read_Background" red="230" green="235" blue="232">
+      </color>
+    </background_color>
+    <wrap_words>true</wrap_words>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>Counter 2 Calc INPA</text>
+    <x>370</x>
+    <y>210</y>
+    <width>140</width>
+    <height>30</height>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>
