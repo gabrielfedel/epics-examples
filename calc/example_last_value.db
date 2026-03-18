@@ -1,0 +1,18 @@
+# Example showing how to use the .LA field 
+# to access the previous value of a record in a calculation.
+
+# Simulated temperature
+record(ao, "$(P)$(R)Temperature") {
+    field(DESC, "Temperature")
+    field(EGU,  "K")
+    field(VAL,  "0")
+    field(MDEL, "-1") # that is needed to post monitors even when same value is written
+}
+
+record(calcout , "$(P)$(R)TemperatureChange") {
+    field(DESC, "Calculate temperature change")
+    field(CALC, "A-B")
+    field(INPA, "$(P)$(R)Temperature CP") # trigger using CP, if that is too fast use SCAN
+    field(INPB, "$(P)$(R)TemperatureChange.LA") # to access prev value of temperature
+    field(VAL,  "0")
+}
