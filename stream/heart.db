@@ -1,0 +1,13 @@
+record(bi, "$(P)TESTSTREAM"){
+    field(DTYP, "stream")
+    field(INP, "@heart.proto getTest $(PORT)")
+    field(ZNAM, "LOCAL")
+    field(ONAM, "REMOTE")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)HEARTBEAT")
+}
+
+record(calc, "$(P)HEARTBEAT") {
+    field(INPA, "$(P)TESTSTREAM.STAT")
+    field(CALC, "A=9?VAL:VAL+1")
+}
