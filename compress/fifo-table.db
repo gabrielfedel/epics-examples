@@ -1,0 +1,86 @@
+record(ao, "GSF:PVVALUE") {
+}
+
+record(compress, "GSF:PVTESTCOMP") {
+    field(INP, "GSF:PVVALUE")
+    field(ALG, "Circular Buffer")
+    field(NSAM, "10")
+    field(BALG, "FIFO Buffer")
+    field(FLNK, "GSF:PVRESULT")
+}
+
+
+record(waveform, "GSF:PVRESULT"){
+    field(INP, "GSF:PVTESTCOMP")
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+    info(Q:group, {
+        "GSF:MyTable":{
+            "value.VALUE1":{+type:"plain", +channel:"VAL"}
+        }
+    })
+}
+
+# VALUE 2
+
+record(ao, "GSF:PVVALUE2") {
+}
+
+record(compress, "GSF:PVTESTCOMP2") {
+    field(INP, "GSF:PVVALUE2")
+    field(ALG, "Circular Buffer")
+    field(NSAM, "10")
+    field(BALG, "FIFO Buffer")
+    field(FLNK, "GSF:PVRESULT2")
+}
+
+
+record(waveform, "GSF:PVRESULT2"){
+    field(INP, "GSF:PVTESTCOMP2")
+    field(NELM, "10")
+    field(FTVL, "DOUBLE")
+    info(Q:group, {
+        "GSF:MyTable":{
+            "value.VALUE2":{+type:"plain", +channel:"VAL"}
+        }
+    })
+}
+
+# Field with strings
+
+record(waveform, "GSF:PVRESULT3"){
+    field(NELM, "10")
+    field(FTVL, "STRING")
+    info(Q:group, {
+        "GSF:MyTable":{
+            "value.VALUE3":{+type:"plain", +channel:"VAL"}
+        }
+    })
+}
+
+# Table
+
+
+record(aai, "GSF:Titles") {
+    field(FTVL, "STRING")
+    field(NELM, "3")
+    field(PINI,"YES")
+    field(INP , {const:["Values", "Other Values", "More values"]})
+    info(Q:group, {
+        "GSF:MyTable":{
+            +id:"epics:nt/NTTable:1.0",
+            "labels":{+type:"plain", +channel:"VAL"}
+        }
+    })
+}
+
+# Update Point - PV which will include the values effectively  to the array
+
+record(bo, "GSF:Add") {
+    field(FLNK, "GSF:#AddFanout")
+}
+
+record(fanout, "GSF:#AddFanout") {
+    field(LNK0, "GSF:PVTESTCOMP")
+    field(LNK1, "GSF:PVTESTCOMP2")
+}
