@@ -1,46 +1,72 @@
-record(ao, "GSF:PVVALUE") {
+record(ao, "$(P=RPTEST:)PVVALUE11") {
+    field(DESC, "Value 1 column 1")
 }
 
-record(compress, "GSF:PVTESTCOMP") {
-    field(INP, "GSF:PVVALUE")
+record(ao, "$(P=RPTEST:)PVVALUE21") {
+    field(DESC, "Value 2 column 1")
+}
+
+
+
+
+record(ao, "$(P=RPTEST:)PVVALUE1") {
+    field(DESC, "Value 1 column 1")
+}
+
+
+record(compress, "$(P=RPTEST:)PVTESTCOMP") {
+    field(DESC, "Record to add values to 1st column")
+    field(INP, "$(P=RPTEST:)PVVALUE1")
     field(ALG, "Circular Buffer")
     field(NSAM, "10")
     field(BALG, "FIFO Buffer")
-    field(FLNK, "GSF:PVRESULT")
+    field(FLNK, "$(P=RPTEST:)PVRESULT")
 }
 
 
-record(waveform, "GSF:PVRESULT"){
-    field(INP, "GSF:PVTESTCOMP")
+record(waveform, "$(P=RPTEST:)PVRESULT"){
+    field(DESC, "1st column")
+    field(INP, "$(P=RPTEST:)PVTESTCOMP")
     field(NELM, "10")
     field(FTVL, "DOUBLE")
     info(Q:group, {
-        "GSF:MyTable":{
+        "$(P=RPTEST:)MyTable":{
             "value.VALUE1":{+type:"plain", +channel:"VAL"}
         }
     })
 }
 
-# VALUE 2
+# VALUE 2 - Column 2
 
-record(ao, "GSF:PVVALUE2") {
+record(ao, "$(P=RPTEST:)PVVALUE12") {
+    field(DESC, "Value 1 column 2")
 }
 
-record(compress, "GSF:PVTESTCOMP2") {
-    field(INP, "GSF:PVVALUE2")
+record(ao, "$(P=RPTEST:)PVVALUE22") {
+    field(DESC, "Value 2 column 2")
+}
+
+record(ao, "$(P=RPTEST:)PVVALUE2") {
+    field(DESC, "Value 2")
+}
+
+record(compress, "$(P=RPTEST:)PVTESTCOMP2") {
+    field(DESC, "Record to add values to 2nd column")
+    field(INP, "$(P=RPTEST:)PVVALUE2")
     field(ALG, "Circular Buffer")
     field(NSAM, "10")
     field(BALG, "FIFO Buffer")
-    field(FLNK, "GSF:PVRESULT2")
+    field(FLNK, "$(P=RPTEST:)PVRESULT2")
 }
 
 
-record(waveform, "GSF:PVRESULT2"){
-    field(INP, "GSF:PVTESTCOMP2")
+record(waveform, "$(P=RPTEST:)PVRESULT2"){
+    field(DESC, "2nd column")
+    field(INP, "$(P=RPTEST:)PVTESTCOMP2")
     field(NELM, "10")
     field(FTVL, "DOUBLE")
     info(Q:group, {
-        "GSF:MyTable":{
+        "$(P=RPTEST:)MyTable":{
             "value.VALUE2":{+type:"plain", +channel:"VAL"}
         }
     })
@@ -48,11 +74,11 @@ record(waveform, "GSF:PVRESULT2"){
 
 # Field with strings
 
-record(waveform, "GSF:PVRESULT3"){
+record(waveform, "$(P=RPTEST:)PVRESULT3"){
     field(NELM, "10")
     field(FTVL, "STRING")
     info(Q:group, {
-        "GSF:MyTable":{
+        "$(P=RPTEST:)MyTable":{
             "value.VALUE3":{+type:"plain", +channel:"VAL"}
         }
     })
@@ -61,26 +87,51 @@ record(waveform, "GSF:PVRESULT3"){
 # Table
 
 
-record(aai, "GSF:Titles") {
+record(aai, "$(P=RPTEST:)Titles") {
     field(FTVL, "STRING")
     field(NELM, "3")
     field(PINI,"YES")
     field(INP , {const:["Values", "Other Values", "More values"]})
     info(Q:group, {
-        "GSF:MyTable":{
+        "$(P=RPTEST:)MyTable":{
             +id:"epics:nt/NTTable:1.0",
             "labels":{+type:"plain", +channel:"VAL"}
         }
     })
 }
 
-# Update Point - PV which will include the values effectively  to the array
-
-record(bo, "GSF:Add") {
-    field(FLNK, "GSF:#AddFanout")
+# Add point 1 (to both columns, 1 and 2)
+record(bo, "$(P=RPTEST:)Add1") {
+    field(FLNK, "$(P=RPTEST:)#Add1Seq")
 }
 
-record(fanout, "GSF:#AddFanout") {
-    field(LNK0, "GSF:PVTESTCOMP")
-    field(LNK1, "GSF:PVTESTCOMP2")
+record(seq, "$(P=RPTEST:)#Add1Seq") {
+    field(DOL0, "$(P=RPTEST:)PVVALUE11")
+    field(LNK0, "$(P=RPTEST:)PVVALUE1")
+    field(DOL1, "1")
+    field(LNK1, "$(P=RPTEST:)PVTESTCOMP.PROC")
+
+
+    field(DOL2, "$(P=RPTEST:)PVVALUE12")
+    field(LNK2, "$(P=RPTEST:)PVVALUE2")
+    field(DOL3, "1")
+    field(LNK3, "$(P=RPTEST:)PVTESTCOMP2.PROC")
+}
+
+
+# Add point 2
+record(bo, "$(P=RPTEST:)Add2") {
+    field(FLNK, "$(P=RPTEST:)#Add2Seq")
+}
+
+record(seq, "$(P=RPTEST:)#Add2Seq") {
+    field(DOL0, "$(P=RPTEST:)PVVALUE21")
+    field(LNK0, "$(P=RPTEST:)PVVALUE1")
+    field(DOL1, "1")
+    field(LNK1, "$(P=RPTEST:)PVTESTCOMP.PROC")
+
+    field(DOL2, "$(P=RPTEST:)PVVALUE22")
+    field(LNK2, "$(P=RPTEST:)PVVALUE2")
+    field(DOL3, "1")
+    field(LNK3, "$(P=RPTEST:)PVTESTCOMP2.PROC")
 }
