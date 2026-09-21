@@ -1,0 +1,29 @@
+# Copying from waveform
+record(waveform, "$(P)$(R)PointsWav") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(PINI, "YES")
+    field(INP, "[1,2]")
+}
+
+record(aao, "$(P)$(R)PointsFromWav") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(DOL, " $(P)$(R)PointsWav CP")
+    field(OMSL, "closed_loop")
+}
+
+# Copying from aai record
+record(aai, "$(P)$(R)PointsAai") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(PINI, "YES")
+    field(INP , "[3,4]")
+}
+
+record(aao, "$(P)$(R)PointsFromAai") {
+    field(FTVL, "LONG")
+    field(NELM, "10")
+    field(DOL, " $(P)$(R)PointsAai CP")
+    field(OMSL, "closed_loop")
+}
